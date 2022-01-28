@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/drawable-v24/alert_bg.xml" value="0.2203125" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/drawable-v24/back.xml" value="0.2203125" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/drawable-v24/cardbg.xml" value="0.21614583333333334" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/drawable-v24/coldleeds_bg.xml" value="0.2203125" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/drawable-v24/dropdown_purple.xml" value="0.21614583333333334" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/drawable-v24/edit_bg.xml" value="0.2203125" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/drawable-v24/mobile.xml" value="0.2203125" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/drawable-v24/nic.xml" value="0.2203125" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/drawable-v24/spinner_bg.xml" value="0.21614583333333334" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/drawable/card_bg.xml" value="0.2203125" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/drawable/circular_progress.xml" value="0.20625" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/drawable/logout.xml" value="0.2203125" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/drawable/user.xml" value="0.2203125" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/layout/activity_calculator.xml" value="0.25" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/layout/activity_cold_leeds.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/layout/activity_dashboard.xml" value="0.22" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/layout/activity_data_tables.xml" value="0.25" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/layout/activity_hot_leeds.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/layout/activity_leeds_details.xml" value="0.21238938053097345" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/layout/activity_leeds_head_page.xml" value="0.22" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/layout/activity_leeds_table_layout.xml" value="0.22" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/layout/activity_login.xml" value="0.22" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/layout/activity_more__lease_data_load.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/layout/activity_more_data_load.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/layout/activity_new_lead_layout.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/layout/activity_other_tables.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/layout/activity_prospect_leeds.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/layout/activity_sanction_letter_display.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/layout/activity_warm_leeds.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/layout/activity_web_view.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/layout/alert_update_.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/layout/circular_progress.xml" value="0.19010416666666666" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/layout/datatable_list.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/layout/fragment_cold_leeds.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/layout/hotleeds_list.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/layout/leeds_list.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/layout/leeds_update_details.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/layout/progress_layout.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/layout/spinner_colorbg.xml" value="0.2" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/layout/trialcal_list.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/layout/web_view.xml" value="0.20416666666666666" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

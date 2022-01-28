@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/lvTemplate"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/light_purple"
+    android:orientation="horizontal"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/txtMonth"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="1dp"
+        android:gravity="center"
+        android:text="Month"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txtCapital"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="1dp"
+        android:gravity="center"
+        android:text="Capital"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txtInterest"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="1dp"
+        android:gravity="center"
+        android:text="Interest"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txtInstallment"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="1dp"
+        android:gravity="center"
+        android:text="Installment"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txtOutstanding"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="1dp"
+        android:gravity="center"
+        android:text="Outstanding"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
+</LinearLayout>

@@ -1,0 +1,754 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Leeds.LeedsUpdate">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/purpletop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.06"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.7"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.2" />
+
+        <TextView
+            android:id="@+id/topic"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text=""
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/logowhite"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.7"
+            app:layout_constraintHorizontal_bias="0.95"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.2" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/light_purple"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.07"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/profilename"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="Username"
+            android:drawableLeft="@drawable/nic"
+            android:drawableRight="@drawable/dropdown_purple"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/purpletop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/logout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:drawableRight="@drawable/logout"
+            android:text="sign out  "
+            android:textColor="@color/purpletop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.9"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/cardbg"
+            android:orientation="vertical"
+            android:padding="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="Leed ID :"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/leedId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="top"
+                    android:padding="10dp"
+                    android:inputType="text"
+                    android:background="@drawable/cardbg"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="3"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="NIC :"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/nic"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="top"
+                    android:inputType="text"
+                    android:hint="type your NIC here"
+                    android:background="@drawable/cardbg"
+                    android:padding="10dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="3"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="Title :"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/cardbg"
+                    android:gravity="top"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:weightSum="2"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="Full name :"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/fullname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="top"
+                    android:inputType="text"
+                    android:hint="type your fullname here"
+                    android:padding="10dp"
+                    android:background="@drawable/cardbg"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:weightSum="2"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="Name with initials :"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/nameInitials"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="top"
+                    android:inputType="text"
+                    android:hint="type your name with initials here"
+                    android:padding="10dp"
+                    android:background="@drawable/cardbg"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:weightSum="2"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="Gender :"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/gender"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/cardbg"
+                    android:gravity="top"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:weightSum="2"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="Date of Birth :"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/dob"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="top"
+                    android:inputType="text"
+                    android:hint="mm/dd/yyyy"
+                    android:padding="10dp"
+                    android:background="@drawable/cardbg"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:weightSum="2"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="Email :"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="top"
+                    android:inputType="text"
+                    android:hint="name@gmail.com"
+                    android:padding="10dp"
+                    android:background="@drawable/cardbg"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:weightSum="2"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="Mobile No :"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/mobile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="top"
+                    android:inputType="phone"
+                    android:hint="0123456789"
+                    android:padding="10dp"
+                    android:background="@drawable/cardbg"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:weightSum="2"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="Marketing Officer :"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/mkofficer"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/cardbg"
+                    android:gravity="top"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:weightSum="2"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="Branch :"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/branch"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/cardbg"
+                    android:gravity="top"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:weightSum="2"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="Virtual Branch :"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/virtualbranch"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/cardbg"
+                    android:gravity="top"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:weightSum="4"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="Address  :"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/paddress1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="top"
+                    android:inputType="text"
+                    android:hint="address line 1"
+                    android:padding="10dp"
+                    android:background="@drawable/cardbg"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@color/black" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/paddress2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="top"
+                    android:inputType="text"
+                    android:hint="address line 2"
+                    android:padding="10dp"
+                    android:background="@drawable/cardbg"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@color/black" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/pcity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="top"
+                    android:inputType="text"
+                    android:hint="city"
+                    android:padding="10dp"
+                    android:background="@drawable/cardbg"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:weightSum="2"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="Channel :"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/channel"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/cardbg"
+                    android:gravity="top"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:weightSum="2"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="Product :"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/product"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/cardbg"
+                    android:gravity="top"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:weightSum="2"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="Stage :"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/stage"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/cardbg"
+                    android:gravity="top"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:weightSum="2"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="Followup Date :"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/followupdate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="top"
+                    android:inputType="text"
+                    android:hint="mm/dd/yyyy"
+                    android:padding="10dp"
+                    android:background="@drawable/cardbg"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:weightSum="2"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="Followup Action :"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/followupaction"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="top"
+                    android:inputType="text"
+                    android:hint="type followUp Action here"
+                    android:padding="10dp"
+                    android:background="@drawable/cardbg"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:layout_marginTop="10dp">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/update"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="20dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/edit_bg"
+                    android:text="Update"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/white" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/close"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="20dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/edit_bg"
+                    android:text="Close"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,105 @@
+<resources>
+    <string name="app_name">CMS</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="titleSpinner">
+        <item>Mr</item>
+        <item>Mrs</item>
+        <item>Miss</item>
+        <item>Master</item>
+        <item>Prof</item>
+        <item>Dr</item>
+    </string-array>
+
+    <string-array name="genderSpinner">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+
+    <string-array name="mkofficerSpinner">
+        <item>Thilina Lakmal</item>
+        <item>Ranthilaka Durayalage Sagara Saman Kumara</item>
+        <item>Dinesh Wickremasinghe</item>
+        <item>Sanjaya Liyanage </item>
+        <item>Rajapaksha Arachchillage Akila Chanaka</item>
+        <item>Henda Witharanage Kusal Dewapriya </item>
+        <item>Bambarawana Liayanagamage Aruna Ravindra Rathnayaka </item>
+        <item>Amila Rumes Weerasinghe </item>
+        <item>Jayan Harshana Mallikaarchchi </item>
+        <item>Kotte Muhandiramge Isuru Malinda Rodrigo </item>
+    </string-array>
+
+    <string-array name="branchSpinner">
+        <item>Head Office</item>
+        <item>City Office</item>
+        <item>Kiribathgoda</item>
+        <item>Kuliyapitiya</item>
+        <item>Kegalle</item>
+        <item>Matara</item>
+        <item>Kandy</item>
+        <item>Kalutara</item>
+        <item>Gampaha</item>
+        <item>Negombo</item>
+        <item>Galle</item>
+        <item>Kurunegala</item>
+        <item>Metro</item>
+        <item>Dambulla</item>
+        <item>Malabe</item>
+        <item>Maharagama</item>
+    </string-array>
+
+    <string-array name="vbranchSpinner">
+        <item>Head Office</item>
+        <item>City Office</item>
+        <item>Kiribathgoda</item>
+        <item>Kuliyapitiya</item>
+        <item>Kegalle</item>
+        <item>Matara</item>
+        <item>Kandy</item>
+        <item>Kalutara</item>
+        <item>Gampaha</item>
+        <item>Negombo</item>
+        <item>Galle</item>
+    </string-array>
+
+    <string-array name="channelSpinner">
+        <item>Pharmaceutical Industry</item>
+        <item>Insurance Agent</item>
+        <item>Garage Agent</item>
+        <item>Vehicle Dealer</item>
+        <item>Existing Clients</item>
+    </string-array>
+
+    <string-array name="productSpinner">
+        <item>Leasing</item>
+        <item>Vehicle Loan</item>
+        <item>Finance Lease - 2W</item>
+        <item>Finance Lease - 3W</item>
+        <item>Finance Lease - 4W</item>
+    </string-array>
+
+    <string-array name="stageSpinner">
+        <item>Hot</item>
+        <item>Cold</item>
+        <item>Warm</item>
+        <item>Prospecting</item>
+    </string-array>
+
+
+    <string-array name="calProduct">
+        <item>Vehicle Loan</item>
+        <item>Finance Lease-4W</item>
+        <item>Finance Lease-3W</item>
+        <item>Finance Lease-2W</item>
+        <item>Smart Draft</item>
+        <item>Smart Cash</item>
+    </string-array>
+
+    <string-array name="calRepayment">
+        <item>Equated</item>
+        <item>Structured</item>
+    </string-array>
+
+
+</resources>

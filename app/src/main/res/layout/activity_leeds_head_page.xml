@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LeedsHeadPage"
+    android:background="@color/light_purple"
+    android:paddingBottom="5dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/purpletop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.06"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.7"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Leeds"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/logowhite"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.7"
+            app:layout_constraintHorizontal_bias="0.95"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.2" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/light_purple"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.07"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/profilename"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="Username"
+            android:drawableLeft="@drawable/nic"
+            android:drawableRight="@drawable/dropdown_purple"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/purpletop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/logout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:drawableRight="@drawable/logout"
+            android:text="sign out  "
+            android:textColor="@color/purpletop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.9"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/light_purple"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="0.2"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0">
+
+                <LinearLayout
+                    android:id="@+id/hotleedsLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/hotleeds_bg"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="Hot Leeds"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/hotleedscount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="-"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/warmleedsLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/warmleeds_bg"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="Warm Leeds"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/warmleedscount"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="-"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/coldleedsLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/coldleeds_bg"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="Cold Leeds"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/coldleedscount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="-"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/prospectleedsLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/prospectleeds_bg"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="Prospecting Leeds"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/prospectleedscount"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="-"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="40dp"
+        android:background="@color/light_purple"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.5"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.99"
+        app:layout_constraintWidth_percent="0.7">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Copywright @ IT Team@FintrexFinance"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

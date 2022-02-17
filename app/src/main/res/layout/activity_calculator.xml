@@ -96,6 +96,7 @@
             android:gravity="center"
             android:drawableRight="@drawable/logout"
             android:text="sign out  "
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@color/purpletop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -349,6 +350,7 @@
                     android:gravity="top"
                     android:padding="10dp"
                     android:background="@drawable/cardbg"
+                    android:backgroundTint="@color/light_grey"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
                     android:textColor="@color/black" />
 
@@ -369,12 +371,92 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:background="@color/teal_200"
+                    android:background="@drawable/cardbg"
+                    android:backgroundTint="@color/teal_200"
                     android:text="Calculate"
+                    android:layout_margin="10dp"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                     android:textColor="@color/white" />
 
             </LinearLayout>
+
+
+
+            <LinearLayout
+                android:id="@+id/structured_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="20dp"
+                android:visibility="invisible">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp"
+                    android:weightSum="11"
+                    android:background="@color/light_grey">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="1dp"
+                        android:gravity="center"
+                        android:text="From"
+                        android:layout_weight="3"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="1dp"
+                        android:gravity="center"
+                        android:text="To"
+                        android:layout_weight="3"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="1dp"
+                        android:gravity="center"
+                        android:text="Installment"
+                        android:layout_weight="2"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="1dp"
+                        android:gravity="center"
+                        android:layout_weight="3"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/addRecord"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_margin="10dp"
+                android:text="+ Add Record"
+                android:textColor="@color/white"
+                android:background="@drawable/cardbg"
+                android:backgroundTint="@color/light_pink"/>
+
 
             <HorizontalScrollView
                 android:layout_width="match_parent"
@@ -391,6 +473,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
+                        android:padding="10dp"
                         android:background="@android:color/holo_orange_light">
 
                         <TextView
@@ -454,10 +537,60 @@
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/coldrecycler"
-                        android:layout_marginBottom="100dp"
-                        android:paddingBottom="50dp"/>
+                        android:layout_height="wrap_content"
+                        android:id="@+id/calrecycler"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="10dp"
+                        android:background="@color/light_purple">
+
+                        <TextView
+                            android:id="@+id/txtTotal"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="1dp"
+                            android:gravity="center"
+                            android:text="Total"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txtCapitalTot"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="1dp"
+                            android:gravity="center"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txtInterestTot"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="1dp"
+                            android:gravity="center"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txtInstallmentTot"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="1dp"
+                            android:gravity="center"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+
+
+                    </LinearLayout>
 
 
                 </LinearLayout>

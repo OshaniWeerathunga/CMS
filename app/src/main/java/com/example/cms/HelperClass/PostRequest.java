@@ -2,6 +2,7 @@ package com.example.cms.HelperClass;
 
 import android.text.TextUtils;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -108,6 +109,8 @@ public class PostRequest {
             stringBuilder.append("=");
 
             stringBuilder.append(URLEncoder.encode(map_entry.getValue(), "UTF-8"));
+
+            System.out.println(stringBuilder);
 
         }
 
@@ -248,6 +251,8 @@ public class PostRequest {
         }
 
     }
+
+
 
 
 

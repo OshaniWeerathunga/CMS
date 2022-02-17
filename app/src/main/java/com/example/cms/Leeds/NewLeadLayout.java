@@ -4,8 +4,12 @@ import static com.example.cms.LoginActivity.Username;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -14,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -30,6 +35,10 @@ import org.json.JSONObject;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 import java.util.regex.Pattern;
 
 public class NewLeadLayout extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
@@ -48,6 +57,7 @@ public class NewLeadLayout extends AppCompatActivity implements AdapterView.OnIt
     String ServerLogoutURL = "http://192.168.40.7:8080/cms/logout?";
     URL url;
     String finalResult;
+    DatePickerDialog.OnDateSetListener setListener;
 
 
     @Override
@@ -212,6 +222,50 @@ public class NewLeadLayout extends AppCompatActivity implements AdapterView.OnIt
         });
 
 
+        //create date picker for followdate
+        Calendar calendar = Calendar.getInstance();
+         final int year = calendar.get(Calendar.YEAR);
+         final int month = calendar.get(Calendar.MONTH);
+         final int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+         followupdate.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 DatePickerDialog datePickerDialog = new DatePickerDialog(
+                         NewLeadLayout.this, new DatePickerDialog.OnDateSetListener() {
+                     @Override
+                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                         month = month+1;
+                         String fdate = year +"-"+month+"-"+dayOfMonth;
+                         followupdate.setText(fdate);
+                     }
+                 },year,month,day);
+                 datePickerDialog.show();
+
+             }
+         });
+
+         dob.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 DatePickerDialog datePickerDialog = new DatePickerDialog(
+                         NewLeadLayout.this, new DatePickerDialog.OnDateSetListener() {
+                     @Override
+                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                         month = month+1;
+                         String dobdate = year +"-"+month+"-"+dayOfMonth;
+                         dob.setText(dobdate);
+                     }
+                 },year,month,day);
+                 datePickerDialog.show();
+
+             }
+         });
+
+
+
+
+
         //update details button click
         submit = findViewById(R.id.save);
         submit.setOnClickListener(new View.OnClickListener() {
@@ -234,6 +288,7 @@ public class NewLeadLayout extends AppCompatActivity implements AdapterView.OnIt
         });
 
     }
+
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

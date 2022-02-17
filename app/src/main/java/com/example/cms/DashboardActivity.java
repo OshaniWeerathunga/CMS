@@ -50,9 +50,9 @@ public class DashboardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
-
-        //GetPrecentageDataFunction(date);
         GetDataFunction();
+        GetPrecentageDataFunction(date);
+
 
         //get profile name
         profilename = Username;

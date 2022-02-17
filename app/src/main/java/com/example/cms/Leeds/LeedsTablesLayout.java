@@ -130,7 +130,7 @@ public class LeedsTablesLayout extends AppCompatActivity {
                     JSONObject jsonObject = new JSONObject(httpResponseMsg);
                     JSONArray array = jsonObject.getJSONArray("rows");
 
-                    hotleedsdata = new ArrayList<Arrays>();
+                    //hotleedsdata = new ArrayList<Arrays>();
 
                     for(int i=0; i<array.length();i++){
                         JSONArray jarray = array.getJSONArray(i);
@@ -148,8 +148,6 @@ public class LeedsTablesLayout extends AppCompatActivity {
                         list.add(leedsTableModel);
 
                     }
-                    //System.out.println("model class values are ---- "+list);
-
                     adapter = new LeedsTableAdapter(LeedsTablesLayout.this,list);
                     recyclerView.setAdapter(adapter);
                     

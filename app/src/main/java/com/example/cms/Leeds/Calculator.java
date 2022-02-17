@@ -3,9 +3,12 @@ package com.example.cms.Leeds;
 import static com.example.cms.LoginActivity.Username;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -13,13 +16,17 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.cms.Adapter.CalDataAdapter;
 import com.example.cms.Adapter.LeedsTableAdapter;
+import com.example.cms.HelperClass.MultipartRequest;
 import com.example.cms.HelperClass.PostRequest;
 import com.example.cms.LoginActivity;
+import com.example.cms.Models.CalDataModel;
 import com.example.cms.Models.LeedsTableModel;
 import com.example.cms.R;
 
@@ -37,7 +44,8 @@ import java.util.List;
 
 public class Calculator extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    TextView topicTv,profilenameTv,logout,rate,rentalTV;
+    TextView topicTv,profilenameTv,logout,rate;
+    TextView capitalTotTv,interestTotTv,installmentTotTv,rentalTV;
     String topic,profilename;
     ImageView back;
     Button cal;
@@ -51,10 +59,27 @@ public class Calculator extends AppCompatActivity implements AdapterView.OnItemS
     String ServerloadRateURL = "http://192.168.40.7:8080/cms/leasing/charges?";
     String loadProductListURL = "http://192.168.40.7:8080/cms/MobileApp/getMobileProductList";
     String loadCalculatorURL = "http://192.168.40.7:8080/cms/MobileApp/getMobileTrialCal";
+    String UploadUrl = "http://192.168.40.7:8080/cms/lead/update?";
+
     URL url;
     String finalResult,productId,repaymentId;
+    String capital,outstanding,intrest,month,installment;
+    String capitalTot, interestTot, installmentTot,rental;
     HashMap<String,String> hashMap = new HashMap<>();
     HashMap<String,String> hashMap2 = new HashMap<>();
+    HashMap hashMapStructure = new HashMap<>();
+
+    RecyclerView recyclerView;
+    List<CalDataModel> callist = new ArrayList<>();
+    CalDataAdapter caladapter;
+
+    LinearLayout structuredList;
+    Button addRecord;
+    ImageView removeRecord;
+    EditText from,to,structuredInstallment;
+
+    JSONObject data;
+    JSONArray structarray = new JSONArray();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,8 +94,15 @@ public class Calculator extends AppCompatActivity implements AdapterView.OnItemS
         amountET = findViewById(R.id.financeAmt);
         rateET = findViewById(R.id.interestRate);
         tenorET = findViewById(R.id.tenor);
-        rentalTV = findViewById(R.id.rental);
         amortizedET = findViewById(R.id.amortized);
+
+        rentalTV = findViewById(R.id.rental);
+        capitalTotTv = findViewById(R.id.txtCapitalTot);
+        installmentTotTv = findViewById(R.id.txtInstallmentTot);
+        interestTotTv = findViewById(R.id.txtInterestTot);
+
+        structuredList = findViewById(R.id.structured_list);
+        addRecord = findViewById(R.id.addRecord);
 
         //get topic of the header field
         topic = getIntent().getStringExtra("topic");
@@ -81,6 +113,11 @@ public class Calculator extends AppCompatActivity implements AdapterView.OnItemS
         profilename = Username;
         profilenameTv = findViewById(R.id.profilename);
         profilenameTv.setText("  " + profilename);
+
+        //define recyclerview
+        recyclerView = findViewById(R.id.calrecycler);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+
 
         //back button
         back = findViewById(R.id.back);
@@ -136,13 +173,28 @@ public class Calculator extends AppCompatActivity implements AdapterView.OnItemS
                 String amortized = amortizedET.getText().toString();
                 String repayment = repaymentId;
 
-                System.out.println(amount+rate+tenor+amortized+repayment);
-
                 if(validateAmount() & validateRate() & validateTenor()){
-                    //calculate(amount,rate,tenor,amortized,repayment);
-                    calculate("1000000.00","15.00","12","0.00",repayment);
+
+                    //check payment method
+                    if (repaymentId.equals("Equated")){
+                        calculateEquated(amount,rate,tenor,amortized,repayment);
+                    }
+                    else if (repaymentId.equals("Structured")){
+                        calculateStructured(amount,rate,tenor,amortized,repayment);
+                    }
+
+
                 }
 
+            }
+        });
+
+
+        //click structured record button
+        addRecord.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addView();
             }
         });
 
@@ -290,9 +342,11 @@ public class Calculator extends AppCompatActivity implements AdapterView.OnItemS
             switch (position) {
                 case 0:
                     repaymentId = "Equated";
+                    structuredList.setVisibility(View.INVISIBLE);
                     break;
                 case 1:
                     repaymentId = "Structured";
+                    structuredList.setVisibility(View.VISIBLE);
                     break;
             }
         }
@@ -395,7 +449,8 @@ public class Calculator extends AppCompatActivity implements AdapterView.OnItemS
     }
 
 
-    public void calculate(String amount,String rate,String tenor,String amortized,String repayment){
+    //calculate equate payment method
+    public void calculateEquated(String amount, String interest, String tenor, String amortized, String repayment){
         class CalculateFunctionClass extends AsyncTask<String,Void,String>  {
 
             @Override
@@ -410,23 +465,44 @@ public class Calculator extends AppCompatActivity implements AdapterView.OnItemS
                 super.onPostExecute(httpResponseMsg);
                 System.out.println(httpResponseMsg);
 
-                /*
                 try {
                     JSONObject jsonObject = new JSONObject(httpResponseMsg);
-                    String alco = jsonObject.getString("alco");
-                    String min = jsonObject.getString("min");
-                    String max = jsonObject.getString("max");
+                    JSONArray array = jsonObject.getJSONArray("result");
 
-                    rate.setText("Alco - "+ alco + "," + " Max - "+ max +","+ " Min - " + min);
+                    callist = new ArrayList<>();
 
-                    rateET.setHint("Alco "+alco);
+                    capitalTot = jsonObject.getString("capitaltot");
+                    interestTot = jsonObject.getString("interestTot");
+                    installmentTot = jsonObject.getString("installmentTot");
+                    rental = jsonObject.getString("rental_amount");
+
+                    for(int i=0; i<array.length();i++){
+                        //JSONArray jarray = array.getJSONArray(i);
+                        JSONObject jsonObject1 = array.getJSONObject(i);
+
+                        capital = jsonObject1.getString("capital");
+                        outstanding = jsonObject1.getString("outstanding");
+                        month = jsonObject1.getString("month");
+                        intrest = jsonObject1.getString("interest");
+                        installment = jsonObject1.getString("installment");
+
+
+                        CalDataModel calDataModel = new CalDataModel(capital,outstanding,month,intrest,installment);
+                        callist.add(calDataModel);
+
+                    }
+                    rentalTV.setText(rental);
+                    capitalTotTv.setText(capitalTot);
+                    interestTotTv.setText(interestTot);
+                    installmentTotTv.setText(installmentTot);
+
+                    caladapter = new CalDataAdapter(Calculator.this,callist);
+                    recyclerView.setAdapter(caladapter);
 
 
                 }catch (JSONException e) {
                     e.printStackTrace();
                 }
-
-                 */
 
             }
 
@@ -444,19 +520,166 @@ public class Calculator extends AppCompatActivity implements AdapterView.OnItemS
                 hashMap2.put("amortized",params[3]);
                 hashMap2.put("repayment_type",params[4]);
 
-                System.out.println(hashMap2);
-
-                finalResult = PostRequest.postRequest(url,hashMap);
+                finalResult = PostRequest.postRequest(url,hashMap2);
 
                 return finalResult;
             }
         }
 
         CalculateFunctionClass calculateFunctionClass = new CalculateFunctionClass();
-        calculateFunctionClass.execute(amount,rate,tenor,amortized,repayment);
+        calculateFunctionClass.execute(amount,interest,tenor,amortized,repayment);
+
+    }
+
+    //calculate structured payment method
+    public void calculateStructured(String amount, String interest, String tenor, String amortized, String repayment){
+        class CalculateFunctionClass extends AsyncTask<String,Void,String>  {
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+
+            }
+
+            @Override
+            protected void onPostExecute(String httpResponseMsg) {
+
+                super.onPostExecute(httpResponseMsg);
+                System.out.println(httpResponseMsg);
+
+
+                try {
+                    JSONObject jsonObject = new JSONObject(httpResponseMsg);
+                    JSONArray array = jsonObject.getJSONArray("result");
+
+                    callist = new ArrayList<>();
+
+                    //capitalTot = jsonObject.getString("capitaltot");
+                    //interestTot = jsonObject.getString("interestTot");
+                    //installmentTot = jsonObject.getString("installmentTot");
+                    //rental = jsonObject.getString("rental_amount");
+
+                    for(int i=0; i<array.length();i++){
+                        //JSONArray jarray = array.getJSONArray(i);
+                        JSONObject jsonObject1 = array.getJSONObject(i);
+
+                        capital = jsonObject1.getString("capital");
+                        outstanding = jsonObject1.getString("outstanding");
+                        month = jsonObject1.getString("month");
+                        intrest = jsonObject1.getString("interest");
+                        installment = jsonObject1.getString("installment");
+
+
+                        CalDataModel calDataModel = new CalDataModel(capital,outstanding,month,intrest,installment);
+                        callist.add(calDataModel);
+
+                    }
+                    //rentalTV.setText(rental);
+                    //capitalTotTv.setText(capitalTot);
+                    //interestTotTv.setText(interestTot);
+                    //installmentTotTv.setText(installmentTot);
+
+                    caladapter = new CalDataAdapter(Calculator.this,callist);
+                    recyclerView.setAdapter(caladapter);
+
+
+                }catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+
+            }
+
+            @Override
+            protected String doInBackground(String... params) {
+
+
+                data = new JSONObject();
+
+                try {
+                    url = new URL(loadCalculatorURL);
+
+                    data.put("from",from.getText().toString());
+                    data.put("to",to.getText().toString());
+                    data.put("installment",structuredInstallment.getText().toString());
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                structarray.put(data);
+
+                hashMapStructure.put("finance_amount",params[0]);
+                hashMapStructure.put("interest_rate",params[1]);
+                hashMapStructure.put("tenor",params[2]);
+                hashMapStructure.put("amortized",params[3]);
+                hashMapStructure.put("repayment_type",params[4]);
+                hashMapStructure.put("paymentstructer", structarray.toString());
+
+                finalResult = PostRequest.postRequest(url,hashMapStructure);
+
+                System.out.println(hashMapStructure);
+
+                return finalResult;
+                /*
+                try {
+                    data.put("from",from.getText().toString());
+                    data.put("to",to.getText().toString());
+                    data.put("installment",structuredInstallment.getText().toString());
+
+                    structarray.put(data);
+
+                    MultipartRequest multipart = new MultipartRequest(loadCalculatorURL);
+                    multipart.addFormField("paymentstructer", structarray.toString());
+                    String response = multipart.finish();
+
+                    System.out.println("response inside try block---"+response);
+                    return response;
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                return  null;
+
+                 */
+            }
+        }
+
+        CalculateFunctionClass calculateFunctionClass = new CalculateFunctionClass();
+        calculateFunctionClass.execute(amount,interest,tenor,amortized,repayment);
 
     }
 
 
+    //add structured records
+    public  void  addView(){
+        View structuredListView = getLayoutInflater().inflate(R.layout.structured_records,null,false);
 
+
+        from = structuredListView.findViewById(R.id.From);
+        to = structuredListView.findViewById(R.id.To);
+        structuredInstallment = structuredListView.findViewById(R.id.structureInstall);
+
+        ImageView remove = structuredListView.findViewById(R.id.record_remove);
+        remove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                removeView(structuredListView);
+            }
+        });
+        
+
+
+        structuredList.addView(structuredListView);
+    }
+
+    //remove structured record
+    public void removeView(View view) {
+        structuredList.removeView(view);
+
+    }
 }

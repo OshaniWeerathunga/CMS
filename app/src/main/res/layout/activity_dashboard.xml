@@ -84,6 +84,7 @@
             android:gravity="center"
             android:drawableRight="@drawable/logout"
             android:text="sign out  "
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@color/purpletop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -126,7 +127,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.05"
+                app:layout_constraintVertical_bias="0.0"
                 app:layout_constraintWidth_percent="0.8">
 
                 <LinearLayout
@@ -256,15 +257,15 @@
                 android:id="@+id/constraintLayout4"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                app:layout_constraintHeight_percent="0.45"
+                app:layout_constraintHeight_percent="0.48"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_bias="0.30"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/constraintLayout3"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintVertical_bias="0.2"
+                app:layout_constraintVertical_bias="0.15"
                 app:layout_constraintWidth_percent="0.7">
 
                 <LinearLayout
@@ -472,7 +473,7 @@
                 android:layout_marginTop="30dp"
                 android:background="@color/light_purple"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHeight_percent="0.18"
+                app:layout_constraintHeight_percent="0.2"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -482,7 +483,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:orientation="horizontal"
                     android:visibility="visible"
                     android:weightSum="3"
@@ -494,19 +495,17 @@
                     <LinearLayout
                         android:id="@+id/CMLayout"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@color/light_purple"
                         android:gravity="center"
                         android:orientation="vertical"
-                        android:paddingLeft="20dp"
-                        android:paddingTop="5dp"
-                        android:weightSum="3">
+                        android:weightSum="4">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1">
+                            android:layout_height="match_parent"
+                            android:layout_weight="4">
 
                             <ProgressBar
                                 android:id="@+id/progressBar1"
@@ -519,22 +518,24 @@
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
+                                app:layout_constraintTop_toTopOf="parent"/>
 
                             <ProgressBar
                                 android:id="@+id/cmprogressBar"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                app:layout_constraintWidth_percent="0.5"
+                                app:layout_constraintHeight_percent="0.7"
                                 android:visibility="invisible"
                                 android:indeterminateOnly="false"
-                                android:padding="10dp"
                                 android:progress="60"
                                 android:progressDrawable="@drawable/circular_progress"
                                 android:rotation="0"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
+                                app:layout_constraintTop_toTopOf="parent"
+                                android:layout_margin="5dp"/>
 
                             <TextView
                                 android:id="@+id/cmPrecentage"
@@ -576,19 +577,17 @@
                     <LinearLayout
                         android:id="@+id/ytdLayout"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@color/light_purple"
                         android:gravity="center"
                         android:orientation="vertical"
-                        android:paddingLeft="20dp"
-                        android:paddingTop="5dp"
-                        android:weightSum="3">
+                        android:weightSum="4">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1">
+                            android:layout_height="match_parent"
+                            android:layout_weight="4">
 
                             <ProgressBar
                                 android:id="@+id/progressBar2"
@@ -605,11 +604,12 @@
 
                             <ProgressBar
                                 android:id="@+id/ytdprogressBar"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                app:layout_constraintWidth_percent="0.5"
+                                app:layout_constraintHeight_percent="0.7"
                                 android:indeterminateOnly="false"
                                 android:visibility="invisible"
-                                android:padding="10dp"
                                 android:progress="60"
                                 android:progressDrawable="@drawable/circular_progress"
                                 android:rotation="0"
@@ -658,19 +658,17 @@
                     <LinearLayout
                         android:id="@+id/NPLLayout"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@color/light_purple"
                         android:gravity="center"
                         android:orientation="vertical"
-                        android:paddingLeft="20dp"
-                        android:paddingTop="5dp"
-                        android:weightSum="3">
+                        android:weightSum="4">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1">
+                            android:layout_weight="4">
 
                             <ProgressBar
                                 android:id="@+id/progressBar3"
@@ -687,11 +685,12 @@
 
                             <ProgressBar
                                 android:id="@+id/nplprogressBar"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                app:layout_constraintWidth_percent="0.5"
+                                app:layout_constraintHeight_percent="0.7"
                                 android:visibility="invisible"
                                 android:indeterminateOnly="false"
-                                android:padding="10dp"
                                 android:progress="60"
                                 android:progressDrawable="@drawable/circular_progress"
                                 android:rotation="0"

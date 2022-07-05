@@ -6,11 +6,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,6 +40,7 @@ public class OtherTablesLayout extends AppCompatActivity {
     URL url;
     String finalResult;
     HashMap<String,String> hashMap = new HashMap<>();
+    ProgressDialog progressDialog;
 
     public List<Arrays> tabledata = new ArrayList<Arrays>();
     public List<Arrays> statusarray = new ArrayList<Arrays>();
@@ -188,6 +191,12 @@ public class OtherTablesLayout extends AppCompatActivity {
             protected void onPreExecute() {
                 super.onPreExecute();
 
+                progressDialog = new ProgressDialog(OtherTablesLayout.this);
+                progressDialog.show();
+                progressDialog.setContentView(R.layout.progress_layout);
+                progressDialog.getWindow().setBackgroundDrawableResource(
+                        android.R.color.transparent
+                );
             }
 
             @Override

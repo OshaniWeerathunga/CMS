@@ -4,7 +4,9 @@ import static com.example.cms.LoginActivity.Username;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.ClipData;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -14,23 +16,30 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.cms.Adapter.LeedsTableAdapter;
 import com.example.cms.HelperClass.MultipartRequest;
 import com.example.cms.HelperClass.PostRequest;
 import com.example.cms.LoginActivity;
+import com.example.cms.Models.LeedsTableModel;
 import com.example.cms.R;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 public class LeedsUpdate extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -47,15 +56,18 @@ public class LeedsUpdate extends AppCompatActivity implements AdapterView.OnItem
 
     ArrayAdapter<CharSequence> stageadapter,titleadapter,genderadapter,mkofficeradapter,branchadapter,vbranchadapter,channeladapter,productadapter;
 
+
     String EachUserLeedsloadUrl = "http://192.168.40.7:8080/cms/lead/loadData?";
     String UploadUrl = "http://192.168.40.7:8080/cms/lead/update?";
     String ServerLogoutURL = "http://192.168.40.7:8080/cms/logout?";
+    String LoadMarketOfficersURL = "http://192.168.40.7:8080/cms/lead/mkofficer?";
     URL url;
     JSONObject data,datamain;
     String finalResult;
     HashMap<String,String> hashMap = new HashMap<>();
     HashMap<String,JSONObject> hashMap2 = new HashMap<>();
     ImageView back;
+
 
 
     @Override
@@ -91,6 +103,9 @@ public class LeedsUpdate extends AppCompatActivity implements AdapterView.OnItem
 
         //call each user further details form
         GetEachUserLeedsDataFunction(id);
+
+        //load market officers
+        LoadMarketOfficers();
 
         //spinner sets
         title = findViewById(R.id.title);
@@ -142,6 +157,7 @@ public class LeedsUpdate extends AppCompatActivity implements AdapterView.OnItem
         mkofficeradapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mkofficer.setAdapter(mkofficeradapter);
         mkofficer.setOnItemSelectedListener(this);
+
 
         //spinner setting for branch
         branchadapter=ArrayAdapter.createFromResource(
@@ -208,6 +224,48 @@ public class LeedsUpdate extends AppCompatActivity implements AdapterView.OnItem
                 dialog.dismiss();
             }
         });
+
+
+        //create date picker for followdate
+        Calendar calendar = Calendar.getInstance();
+        final int year = calendar.get(Calendar.YEAR);
+        final int month = calendar.get(Calendar.MONTH);
+        final int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        followupdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(
+                        LeedsUpdate.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        month = month+1;
+                        String fdate = year +"-"+month+"-"+dayOfMonth;
+                        followupdate.setText(fdate);
+                    }
+                },year,month,day);
+                datePickerDialog.show();
+
+            }
+        });
+
+        dob.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(
+                        LeedsUpdate.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        month = month+1;
+                        String dobdate = year +"-"+month+"-"+dayOfMonth;
+                        dob.setText(dobdate);
+                    }
+                },year,month,day);
+                datePickerDialog.show();
+
+            }
+        });
+
 
 
         //update details button click
@@ -390,37 +448,200 @@ public class LeedsUpdate extends AppCompatActivity implements AdapterView.OnItem
         else if (parent.getId() == R.id.mkofficer) {
             String dropdownTerm = parent.getItemAtPosition(position).toString();
             switch (dropdownTerm) {
-                case "Thilina Lakmal":
+
+                case "Poorna Prathiba":
                     spinnermkofficerHolder = "4";
                     break;
-                case "Ranthilaka Durayalage Sagara Saman Kumara":
-                    spinnermkofficerHolder = "1";
+                case "Dinesh Wickramasinghe":
+                    spinnermkofficerHolder = "12";
                     break;
-                case "Dinesh Wickremasinghe":
-                    spinnermkofficerHolder = "2";
+                case "Sirimal Priyantha":
+                    spinnermkofficerHolder = "48";
                     break;
-                case "Sanjaya Liyanage":
-                    spinnermkofficerHolder = "3";
+                case "Rangana Sampath Kumara":
+                    spinnermkofficerHolder = "50";
                     break;
-                case "Rajapaksha Arachchillage Akila Chanaka":
-                    spinnermkofficerHolder = "5";
+                case "Sagara Saman  Kumara":
+                    spinnermkofficerHolder = "51";
                     break;
-                case "Henda Witharanage Kusal Dewapriya":
-                    spinnermkofficerHolder = "6";
+                case "Thilina Lakmal":
+                    spinnermkofficerHolder = "53";
                     break;
-                case "Bambarawana Liayanagamage Aruna Ravindra Rathnayaka":
-                    spinnermkofficerHolder = "7";
+                case "Steve Perera":
+                    spinnermkofficerHolder = "55";
                     break;
-                case "Amila Rumes Weerasinghe":
-                    spinnermkofficerHolder = "8";
+                case "Sushan Sugandhika Somasiri":
+                    spinnermkofficerHolder = "264";
                     break;
-                case "Jayan Harshana Mallikaarchchi":
-                    spinnermkofficerHolder = "9";
+                case "Cherin Jayasekara":
+                    spinnermkofficerHolder = "268";
                     break;
-                case "Kotte Muhandiramge Isuru Malinda  Rodrigo":
-                    spinnermkofficerHolder = "10";
+                case "Ashan Saranga":
+                    spinnermkofficerHolder = "270";
+                    break;
+                case "Sumudu Manoj Rukshan":
+                    spinnermkofficerHolder = "271";
                     break;
 
+                case "Gehan Ranishika Fernando":
+                    spinnermkofficerHolder = "274";
+                    break;
+                case "Chamli Udayakumara":
+                    spinnermkofficerHolder = "275";
+                    break;
+                case "Sanjaya Perera":
+                    spinnermkofficerHolder = "276";
+                    break;
+                case "Ishara Udayangana":
+                    spinnermkofficerHolder = "277";
+                    break;
+                case "Ravin Dilshan":
+                    spinnermkofficerHolder = "279";
+                    break;
+                case "Sudheera Chathuranga":
+                    spinnermkofficerHolder = "280";
+                    break;
+                case "Priyashad Madhusanka":
+                    spinnermkofficerHolder = "284";
+                    break;
+                case "Lalith Kumara Siriwardana":
+                    spinnermkofficerHolder = "285";
+                    break;
+                case "Indika Senarath Bandara":
+                    spinnermkofficerHolder = "286";
+                    break;
+                case "Keshawa De Soysa":
+                    spinnermkofficerHolder = "288";
+                    break;
+                case "Vinod Manula":
+                    spinnermkofficerHolder = "289";
+                    break;
+                case "Himal Ruvinda":
+                    spinnermkofficerHolder = "290";
+                    break;
+                case "Sanjaya Lakmal":
+                    spinnermkofficerHolder = "296";
+                    break;
+                case "Harsha Chamara besil":
+                    spinnermkofficerHolder = "297";
+                    break;
+                case "Sasitha Sarannga":
+                    spinnermkofficerHolder = "300";
+                    break;
+                case "Anuruddha Perera":
+                    spinnermkofficerHolder = "302";
+                    break;
+                case "Chanaka dhananjaya Weediyawaththa":
+                    spinnermkofficerHolder = "305";
+                    break;
+                case "Sathsara Lakmal Kumara":
+                    spinnermkofficerHolder = "309";
+                    break;
+                case "Akila Chanaka":
+                    spinnermkofficerHolder = "311";
+                    break;
+                case "Amila Dhanushka":
+                    spinnermkofficerHolder = "319";
+                    break;
+                case "Anusha Perera":
+                    spinnermkofficerHolder = "320";
+                    break;
+                case "Asintha Kumara":
+                    spinnermkofficerHolder = "322";
+                    break;
+                case "Kusal Dewapriya":
+                    spinnermkofficerHolder = "323";
+                    break;
+                case "Tharooka Deshan":
+                    spinnermkofficerHolder = "326";
+                    break;
+                case "Jayan Harshan":
+                    spinnermkofficerHolder = "328";
+                    break;
+                case "Isuru Gihan":
+                    spinnermkofficerHolder = "329";
+                    break;
+                case "Thushara Wickramasingha":
+                    spinnermkofficerHolder = "330";
+                    break;
+                case "Aruna Ravindra Rathnayaka":
+                    spinnermkofficerHolder = "332";
+                    break;
+                case "Sachinda Randimal":
+                    spinnermkofficerHolder = "334";
+                    break;
+                case "Deeptha Chiranthaka":
+                    spinnermkofficerHolder = "335";
+                    break;
+                case "Hishan Shamika":
+                    spinnermkofficerHolder = "336";
+                    break;
+                case "Pradeep Nishantha Perera":
+                    spinnermkofficerHolder = "337";
+                    break;
+                case "Lahiru Madusanka Pradeep":
+                    spinnermkofficerHolder = "338";
+                    break;
+                case "Shihan Vidushaka":
+                    spinnermkofficerHolder = "340";
+                    break;
+                case "Isuru Malinda":
+                    spinnermkofficerHolder = "341";
+                    break;
+                case "Roshan Maduwantha":
+                    spinnermkofficerHolder = "343";
+                    break;
+                case "Manjula Wickramasinghage":
+                    spinnermkofficerHolder = "344";
+                    break;
+                case "janith":
+                    spinnermkofficerHolder = "367";
+                    break;
+                case "Kolitha Sudamma Senarath":
+                    spinnermkofficerHolder = "373";
+                    break;
+                case "Rajith Lasitha Bandara":
+                    spinnermkofficerHolder = "374";
+                    break;
+                case "Rajitha Nuwan Kaluararchchi":
+                    spinnermkofficerHolder = "378";
+                    break;
+                case "Lasan Madhubhasha Karunadhipathi":
+                    spinnermkofficerHolder = "385";
+                    break;
+                case "Primal Sandika":
+                    spinnermkofficerHolder = "386";
+                    break;
+                case "Viraj Chathuranga":
+                    spinnermkofficerHolder = "389";
+                    break;
+                case "Rajitha Prasanna Weerasiri":
+                    spinnermkofficerHolder = "394";
+                    break;
+                case "Kasun Hansana Kumara":
+                    spinnermkofficerHolder = "395";
+                    break;
+                case "Manoj Rukshan":
+                    spinnermkofficerHolder = "398";
+                    break;
+                case "Hemantha Adikari":
+                    spinnermkofficerHolder = "400";
+                    break;
+                case "Rangana Nuwan Priyadharshana":
+                    spinnermkofficerHolder = "401";
+                    break;
+                case "Chandika Jayanjan":
+                    spinnermkofficerHolder = "418";
+                    break;
+                case "Manoj Wijethunga":
+                    spinnermkofficerHolder = "421";
+                    break;
+                case "Chamara Sandaruwan":
+                    spinnermkofficerHolder = "422";
+                    break;
+                case "Indra Kumar":
+                    spinnermkofficerHolder = "423";
+                    break;
 
             }
         }
@@ -700,6 +921,50 @@ public class LeedsUpdate extends AppCompatActivity implements AdapterView.OnItem
         UpdateLeedsFunctionClass updateLeedsFunctionClass = new UpdateLeedsFunctionClass();
         updateLeedsFunctionClass.execute();
     }
+
+
+
+    public void LoadMarketOfficers(){
+        class LogoutFunctionClass extends AsyncTask<String,Void,String> {
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+
+            }
+
+            @Override
+            protected void onPostExecute(String httpResponseMsg) {
+
+                super.onPostExecute(httpResponseMsg);
+                System.out.println(httpResponseMsg);
+
+
+
+
+            }
+
+            @Override
+            protected String doInBackground(String... params) {
+
+                try {
+                    url = new URL(LoadMarketOfficersURL);
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                }
+
+                finalResult = PostRequest.logout(url);
+
+                return finalResult;
+            }
+        }
+
+        LogoutFunctionClass logoutFunctionClass = new LogoutFunctionClass();
+        logoutFunctionClass.execute();
+
+    }
+
+
 
     public void logout(){
         class LogoutFunctionClass extends AsyncTask<String,Void,String> {

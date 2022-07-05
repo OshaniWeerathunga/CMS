@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -28,6 +29,7 @@ import com.example.cms.HelperClass.PostRequest;
 import com.example.cms.LoginActivity;
 import com.example.cms.Models.CalDataModel;
 import com.example.cms.Models.LeedsTableModel;
+import com.example.cms.Models.StructuredRecordList;
 import com.example.cms.R;
 
 import org.json.JSONArray;
@@ -49,6 +51,7 @@ public class Calculator extends AppCompatActivity implements AdapterView.OnItemS
     String topic,profilename;
     ImageView back;
     Button cal;
+    ProgressDialog progressDialog;
     Spinner product,repayment;
     EditText amountET,rateET,tenorET,amortizedET;
     ArrayAdapter<CharSequence> productAdapter, repaymentAdapter;
@@ -73,13 +76,17 @@ public class Calculator extends AppCompatActivity implements AdapterView.OnItemS
     List<CalDataModel> callist = new ArrayList<>();
     CalDataAdapter caladapter;
 
-    LinearLayout structuredList;
+    LinearLayout structuredLayout,structuredList;
     Button addRecord;
     ImageView removeRecord;
     EditText from,to,structuredInstallment;
 
     JSONObject data;
-    JSONArray structarray = new JSONArray();
+    JSONArray structarray;
+    ArrayList<StructuredRecordList> recordLists = new ArrayList<>();
+    String f,t,in;
+
+    List<StructuredRecordList> list = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,6 +109,7 @@ public class Calculator extends AppCompatActivity implements AdapterView.OnItemS
         interestTotTv = findViewById(R.id.txtInterestTot);
 
         structuredList = findViewById(R.id.structured_list);
+        structuredLayout = findViewById(R.id.structuredRecordLayout);
         addRecord = findViewById(R.id.addRecord);
 
         //get topic of the header field
@@ -180,7 +188,35 @@ public class Calculator extends AppCompatActivity implements AdapterView.OnItemS
                         calculateEquated(amount,rate,tenor,amortized,repayment);
                     }
                     else if (repaymentId.equals("Structured")){
-                        calculateStructured(amount,rate,tenor,amortized,repayment);
+
+                        // check validity of add records
+                        if(checkValidity()){
+
+                            structarray=new JSONArray();
+
+                            for (int j=0;j<recordLists.size();j++){
+                                StructuredRecordList structuredRecordList1 = recordLists.get(j);
+
+                                data = new JSONObject();
+
+                                try {
+
+                                    data.put("from",structuredRecordList1.getFrom());
+                                    data.put("to",structuredRecordList1.getTo());
+                                    data.put("installment",structuredRecordList1.getInstallment());
+
+
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+
+                                structarray.put(data);
+                            }
+                            //calculate
+                            calculateStructured(amount,rate,tenor,amortized,repayment,structarray);
+
+
+                        }
                     }
 
 
@@ -199,6 +235,69 @@ public class Calculator extends AppCompatActivity implements AdapterView.OnItemS
         });
 
     }
+
+    public boolean checkValidity() {
+
+        recordLists.clear();
+        Boolean result = true;
+
+        for(int i=1; i<structuredList.getChildCount();i++){
+            View structuredListView = structuredList.getChildAt(i);
+
+            EditText fromET = (EditText) structuredListView.findViewById(R.id.From);
+            EditText toET = (EditText) structuredListView.findViewById(R.id.To);
+            EditText structuredInstallmentET = (EditText) structuredListView.findViewById(R.id.structureInstall);
+
+            StructuredRecordList structuredRecordList = new StructuredRecordList();
+
+            if(!fromET.getText().toString().equals("")){
+                //structuredRecordList.setFrom(from.getText().toString());
+                f = fromET.getText().toString();
+            }else {
+                result = false;
+                break;
+            }
+
+            if(!toET.getText().toString().equals("")){
+                //structuredRecordList.setTo(to.getText().toString());
+                t = toET.getText().toString();
+            }else {
+                result = false;
+                break;
+            }
+
+            if(!structuredInstallmentET.getText().toString().equals("")){
+                //structuredRecordList.setInstallment(structuredInstallment.getText().toString());
+                in = structuredInstallmentET.getText().toString();
+            }else {
+                result = false;
+                break;
+            }
+
+
+            StructuredRecordList structuredRecord = new StructuredRecordList(f,t,in);
+            recordLists.add(structuredRecord);
+
+            //recordLists.add(structuredRecordList);
+            System.out.println("Array list values ---- "+recordLists);
+
+        }
+
+        if(recordLists.size()==0){
+            result = false;
+            Toast.makeText(this,"Add Record First",Toast.LENGTH_SHORT).show();
+        }else if (!result){
+            Toast.makeText(this,"Enter Details Correctly",Toast.LENGTH_SHORT).show();
+        }
+
+
+
+
+        System.out.println("result is -    "+result.toString());
+        return result;
+
+    }
+
 
     public void getProductList(){
         class ProductListFunctionClass extends AsyncTask<String,Void,String>  {
@@ -264,6 +363,12 @@ public class Calculator extends AppCompatActivity implements AdapterView.OnItemS
             protected void onPreExecute() {
                 super.onPreExecute();
 
+                progressDialog = new ProgressDialog(Calculator.this);
+                progressDialog.show();
+                progressDialog.setContentView(R.layout.progress_layout);
+                progressDialog.getWindow().setBackgroundDrawableResource(
+                        android.R.color.transparent
+                );
             }
 
             @Override
@@ -342,11 +447,11 @@ public class Calculator extends AppCompatActivity implements AdapterView.OnItemS
             switch (position) {
                 case 0:
                     repaymentId = "Equated";
-                    structuredList.setVisibility(View.INVISIBLE);
+                    structuredLayout.setVisibility(View.INVISIBLE);
                     break;
                 case 1:
                     repaymentId = "Structured";
-                    structuredList.setVisibility(View.VISIBLE);
+                    structuredLayout.setVisibility(View.VISIBLE);
                     break;
             }
         }
@@ -532,7 +637,7 @@ public class Calculator extends AppCompatActivity implements AdapterView.OnItemS
     }
 
     //calculate structured payment method
-    public void calculateStructured(String amount, String interest, String tenor, String amortized, String repayment){
+    public void calculateStructured(String amount, String interest, String tenor, String amortized, String repayment, JSONArray structarray){
         class CalculateFunctionClass extends AsyncTask<String,Void,String>  {
 
             @Override
@@ -554,10 +659,10 @@ public class Calculator extends AppCompatActivity implements AdapterView.OnItemS
 
                     callist = new ArrayList<>();
 
-                    //capitalTot = jsonObject.getString("capitaltot");
-                    //interestTot = jsonObject.getString("interestTot");
-                    //installmentTot = jsonObject.getString("installmentTot");
-                    //rental = jsonObject.getString("rental_amount");
+                    capitalTot = jsonObject.getString("capitaltot");
+                    interestTot = jsonObject.getString("interestTot");
+                    installmentTot = jsonObject.getString("installmentTot");
+                    rental = jsonObject.getString("rental_amount");
 
                     for(int i=0; i<array.length();i++){
                         //JSONArray jarray = array.getJSONArray(i);
@@ -574,10 +679,10 @@ public class Calculator extends AppCompatActivity implements AdapterView.OnItemS
                         callist.add(calDataModel);
 
                     }
-                    //rentalTV.setText(rental);
-                    //capitalTotTv.setText(capitalTot);
-                    //interestTotTv.setText(interestTot);
-                    //installmentTotTv.setText(installmentTot);
+                    rentalTV.setText(rental);
+                    capitalTotTv.setText(capitalTot);
+                    interestTotTv.setText(interestTot);
+                    installmentTotTv.setText(installmentTot);
 
                     caladapter = new CalDataAdapter(Calculator.this,callist);
                     recyclerView.setAdapter(caladapter);
@@ -594,7 +699,7 @@ public class Calculator extends AppCompatActivity implements AdapterView.OnItemS
             @Override
             protected String doInBackground(String... params) {
 
-
+/*
                 data = new JSONObject();
 
                 try {
@@ -610,6 +715,14 @@ public class Calculator extends AppCompatActivity implements AdapterView.OnItemS
                 }
 
                 structarray.put(data);
+
+ */
+                try {
+                    url = new URL(loadCalculatorURL);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
                 hashMapStructure.put("finance_amount",params[0]);
                 hashMapStructure.put("interest_rate",params[1]);
@@ -657,8 +770,7 @@ public class Calculator extends AppCompatActivity implements AdapterView.OnItemS
 
     //add structured records
     public  void  addView(){
-        View structuredListView = getLayoutInflater().inflate(R.layout.structured_records,null,false);
-
+        final View structuredListView = getLayoutInflater().inflate(R.layout.structured_records,null,false);
 
         from = structuredListView.findViewById(R.id.From);
         to = structuredListView.findViewById(R.id.To);
@@ -671,10 +783,8 @@ public class Calculator extends AppCompatActivity implements AdapterView.OnItemS
                 removeView(structuredListView);
             }
         });
-        
-
-
         structuredList.addView(structuredListView);
+
     }
 
     //remove structured record

@@ -383,12 +383,21 @@
 
 
             <LinearLayout
+                android:id="@+id/structuredRecordLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:weightSum="2"
+                android:layout_marginTop="10dp"
+                android:gravity="left"
+                android:visibility="invisible">
+
+                <LinearLayout
                 android:id="@+id/structured_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginTop="20dp"
-                android:visibility="invisible">
+                android:layout_marginTop="20dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -446,7 +455,7 @@
 
             </LinearLayout>
 
-            <androidx.appcompat.widget.AppCompatButton
+                <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/addRecord"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -457,6 +466,7 @@
                 android:background="@drawable/cardbg"
                 android:backgroundTint="@color/light_pink"/>
 
+            </LinearLayout>
 
             <HorizontalScrollView
                 android:layout_width="match_parent"

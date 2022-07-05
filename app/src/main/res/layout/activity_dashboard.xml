@@ -21,6 +21,20 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
 
+        <ImageView
+            android:id="@+id/refresh"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:src="@drawable/refresh"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -98,6 +112,7 @@
         android:id="@+id/scroll"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="20dp"
         android:paddingBottom="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -134,6 +149,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/coldleeds_bg"
                     android:orientation="vertical"
                     android:visibility="visible"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -141,11 +158,20 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
+                    <TextView
+                        android:id="@+id/topicLeed"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Leeds"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
                     <LinearLayout
                         android:id="@+id/todatTaskLayout"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_margin="10dp"
                         android:layout_weight="1"
                         android:background="@drawable/coldleeds_bg"
                         android:gravity="center"
@@ -181,7 +207,6 @@
                         android:id="@+id/delayLayout"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_margin="10dp"
                         android:layout_weight="1"
                         android:background="@drawable/coldleeds_bg"
                         android:gravity="center"
@@ -217,7 +242,6 @@
                         android:id="@+id/upcomingLayout"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_margin="10dp"
                         android:layout_weight="1"
                         android:background="@drawable/coldleeds_bg"
                         android:gravity="center"
@@ -285,7 +309,7 @@
                         android:layout_height="match_parent"
                         android:layout_margin="10dp"
                         android:layout_weight="1"
-                        android:background="@drawable/card_bg"
+                        android:background="@drawable/prospectleeds_bg"
                         android:gravity="center"
                         android:orientation="horizontal"
                         android:padding="10dp"
@@ -308,7 +332,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="2"
                             android:gravity="center"
-                            android:text="-"
+                            android:text=""
                             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                             android:textColor="@color/black"
                             android:textStyle="bold" />
@@ -316,12 +340,12 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/convertLayout"
+                        android:id="@+id/leaseLayout"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_margin="10dp"
                         android:layout_weight="1"
-                        android:background="@drawable/card_bg"
+                        android:background="@drawable/prospectleeds_bg"
                         android:gravity="center"
                         android:orientation="horizontal"
                         android:padding="10dp"
@@ -333,18 +357,54 @@
                             android:layout_weight="1"
                             android:drawableLeft="@drawable/todayacti_icon"
                             android:gravity="left|center"
-                            android:text="    Converted"
+                            android:text="    Lease"
                             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                             android:textColor="@color/black"
                             android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/converted"
+                            android:id="@+id/lease"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="2"
                             android:gravity="center"
-                            android:text="-"
+                            android:text=""
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/loanLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/prospectleeds_bg"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="10dp"
+                        android:weightSum="3">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:drawableLeft="@drawable/todayacti_icon"
+                            android:gravity="left|center"
+                            android:text="    Loan"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/loan"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="2"
+                            android:gravity="center"
+                            android:text=""
                             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                             android:textColor="@color/black"
                             android:textStyle="bold" />
@@ -361,7 +421,8 @@
                         android:gravity="center"
                         android:orientation="horizontal"
                         android:padding="10dp"
-                        android:weightSum="3">
+                        android:weightSum="3"
+                        android:visibility="invisible">
 
                         <TextView
                             android:layout_width="match_parent"
@@ -397,7 +458,8 @@
                         android:gravity="center"
                         android:orientation="horizontal"
                         android:padding="10dp"
-                        android:weightSum="3">
+                        android:weightSum="3"
+                        android:visibility="invisible">
 
                         <TextView
                             android:layout_width="match_parent"
@@ -433,7 +495,8 @@
                         android:gravity="center"
                         android:orientation="horizontal"
                         android:padding="10dp"
-                        android:weightSum="3">
+                        android:weightSum="3"
+                        android:visibility="invisible">
 
                         <TextView
                             android:layout_width="match_parent"
@@ -479,7 +542,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/constraintLayout4"
                 app:layout_constraintVertical_bias="1"
-                app:layout_constraintWidth_percent="0.7">
+                app:layout_constraintWidth_percent="0.7"
+                android:visibility="invisible">
 
                 <LinearLayout
                     android:layout_width="match_parent"

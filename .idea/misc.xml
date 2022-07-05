@@ -14,14 +14,18 @@
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/drawable-v24/spinner_bg.xml" value="0.21614583333333334" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/drawable/card_bg.xml" value="0.2203125" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/drawable/circular_progress.xml" value="0.20625" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/drawable/edit.xml" value="0.18796296296296297" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/drawable/ic_delete_24.xml" value="0.2203125" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/drawable/logout.xml" value="0.2203125" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/drawable/refresh.xml" value="0.14722222222222223" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/drawable/user.xml" value="0.2203125" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/layout/activity_calculator.xml" value="0.16" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/layout/activity_cold_leeds.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/layout/activity_dashboard.xml" value="0.1" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/layout/activity_dashboard.xml" value="0.17" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/layout/activity_data_tables.xml" value="0.25" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/layout/activity_hot_leeds.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/layout/activity_lease_head_page.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/layout/activity_leasing_table_layout.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/layout/activity_leeds_details.xml" value="0.21238938053097345" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/layout/activity_leeds_head_page.xml" value="0.22" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/layout/activity_leeds_table_layout.xml" value="0.22" />
@@ -29,7 +33,7 @@
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/layout/activity_more__lease_data_load.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/layout/activity_more_data_load.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/layout/activity_new_lead_layout.xml" value="0.25" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/layout/activity_new_lead_layout.xml" value="0.16" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/layout/activity_other_tables.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/layout/activity_prospect_leeds.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/layout/activity_sanction_letter_display.xml" value="0.20416666666666666" />
@@ -40,6 +44,7 @@
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/layout/datatable_list.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/layout/fragment_cold_leeds.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/layout/hotleeds_list.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/layout/leasing_list.xml" value="0.1" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/layout/leeds_list.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/layout/leeds_update_details.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/Newcms/app/src/main/res/layout/progress_layout.xml" value="0.20416666666666666" />

@@ -14,6 +14,15 @@
         android:theme="@style/Theme.CMS"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Leasing.AddEditLeasing"
+            android:exported="true" />
+        <activity
+            android:name=".Leasing.LeasingTableLayout"
+            android:exported="true" />
+        <activity
+            android:name=".LeaseHeadPage"
+            android:exported="true" />
+        <activity
             android:name=".Leeds.Calculator"
             android:exported="true" />
         <activity

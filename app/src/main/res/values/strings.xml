@@ -18,16 +18,70 @@
     </string-array>
 
     <string-array name="mkofficerSpinner">
-        <item>Thilina Lakmal</item>
-        <item>Ranthilaka Durayalage Sagara Saman Kumara</item>
-        <item>Dinesh Wickremasinghe</item>
-        <item>Sanjaya Liyanage </item>
-        <item>Rajapaksha Arachchillage Akila Chanaka</item>
-        <item>Henda Witharanage Kusal Dewapriya </item>
-        <item>Bambarawana Liayanagamage Aruna Ravindra Rathnayaka </item>
-        <item>Amila Rumes Weerasinghe </item>
-        <item>Jayan Harshana Mallikaarchchi </item>
-        <item>Kotte Muhandiramge Isuru Malinda Rodrigo </item>
+        <item>Poorna Prathiba</item>
+        <item>Dinesh Wickramasinghe</item>
+        <item>Sirimal Priyantha</item>
+        <item>Rangana Sampath Kumara</item>
+        <item>Sagar Saman Kumara</item>
+        <item>Thilina Lakmal </item>
+        <item>Steve Perera</item>
+        <item>Sushan Sugandhika Somasiri</item>
+        <item>Cherin Jayasekara</item>
+        <item>Ashan Saranga</item>
+        <item>Sumudu Manoj Rukshan</item>
+        <item>Gehan Ranishika Fernando</item>
+        <item>Chamli Udayakumara</item>
+        <item>Sanjaya Perera</item>
+        <item>Ishara Udayangana</item>
+        <item>Ravin Dilshan</item>
+        <item>Sudheera Chathuranga</item>
+        <item>Priyashad Madhusanka</item>
+        <item>Lalith Kumara Siriwardana</item>
+        <item>Indika Senarath Bandara</item>
+        <item>Keshawa De Soysa</item>
+        <item>Vinod Manula</item>
+        <item>Himal Ruvinda</item>
+        <item>Sanjaya Lakmal</item>
+        <item>Harsha Chamara besil</item>
+        <item>Sasitha Sarannga</item>
+        <item>Anuruddha Perera</item>
+        <item>Chanaka dhananjaya Weediyawaththa</item>
+        <item>Sathsara Lakmal Kumara</item>
+        <item>Akila Chanaka</item>
+        <item>Amila Dhanushka</item>
+        <item>Anusha Perera</item>
+        <item>Asintha Kumara</item>
+        <item>Kusal Dewapriya</item>
+        <item>Tharooka Deshan</item>
+        <item>Jayan Harshan</item>
+        <item>Isuru Gihan</item>
+        <item>Thushara Wickramasingha</item>
+        <item>Aruna Ravindra Rathnayaka</item>
+        <item>Sachinda Randimal</item>
+        <item>Deeptha Chiranthaka</item>
+        <item>Hishan Shamika</item>
+        <item>Pradeep Nishantha Perera</item>
+        <item>Lahiru Madusanka Pradeep</item>
+        <item>Shihan Vidushaka</item>
+        <item>Isuru Malinda</item>
+        <item>Roshan Maduwantha</item>
+        <item>Manjula Wickramasinghage</item>
+        <item>janith</item>
+        <item>Kolitha Sudamma Senarath</item>
+        <item>Rajith Lasitha Bandara</item>
+        <item>Rajitha Nuwan Kaluararchchi</item>
+        <item>Lasan Madhubhasha Karunadhipathi</item>
+        <item>Primal Sandika</item>
+        <item>Viraj Chathuranga</item>
+        <item>Rajitha Prasanna Weerasiri</item>
+        <item>Kasun Hansana Kumara</item>
+        <item>Manoj Rukshan</item>
+        <item>Hemantha Adikari</item>
+        <item>Rangana Nuwan Priyadharshana</item>
+        <item>Chandika Jayanjan</item>
+        <item>Manoj Wijethunga</item>
+        <item>Chamara Sandaruwan</item>
+        <item>Indra Kumar</item>
     </string-array>
 
     <string-array name="branchSpinner">

@@ -9,6 +9,8 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -27,9 +29,10 @@ import java.util.HashMap;
 
 public class DashboardActivity extends AppCompatActivity {
 
-    LinearLayout todayLayout,delayLayout,upcomingLayout,leedsLayout,inprogressLayout,pendingLayout,activeFacilityLayout,convertedLayout;
-    TextView todayTv,delayTv,upcomingTv,leedsTv,inprogressTv,pendingTv,rejectedTv,convertedTv;
+    LinearLayout todayLayout,delayLayout,upcomingLayout,leedsLayout,inprogressLayout,pendingLayout,activeFacilityLayout,leaseLayout;
+    TextView todayTv,delayTv,upcomingTv,leedsTv,inprogressTv,pendingTv,rejectedTv,leaseTv;
     ProgressDialog progressDialog;
+    ImageView refresh;
     String today,delay,upcoming,prospected,converted,coldLeeds,hotLeeds,warmLeeds,prospectLeeds,sumLeeds,inprogress,approval,activityFacility;
 
     String cm,ytd,npl,cmprecent,ytdprecent,nplprecent;
@@ -51,8 +54,10 @@ public class DashboardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dashboard);
 
         GetDataFunction();
-        GetPrecentageDataFunction(date);
+        //GetPrecentageDataFunction(date);
 
+        //refresh
+        refresh = findViewById(R.id.refresh);
 
         //get profile name
         profilename = Username;
@@ -67,7 +72,7 @@ public class DashboardActivity extends AppCompatActivity {
         inprogressLayout = findViewById(R.id.inprogressLayout);
         pendingLayout = findViewById(R.id.pendingLayout);
         activeFacilityLayout = findViewById(R.id.activeFacilityLayout);
-        convertedLayout = findViewById(R.id.convertLayout);
+        leaseLayout = findViewById(R.id.leaseLayout);
 
         //textview identify
         todayTv = findViewById(R.id.todayTask);
@@ -77,7 +82,7 @@ public class DashboardActivity extends AppCompatActivity {
         inprogressTv = findViewById(R.id.inprogress);
         rejectedTv = findViewById(R.id.active);
         pendingTv = findViewById(R.id.pendings);
-        convertedTv = findViewById(R.id.converted);
+        leaseTv = findViewById(R.id.lease);
 
         //summary textview identify
         cmTv = findViewById(R.id.cmValue);
@@ -135,12 +140,10 @@ public class DashboardActivity extends AppCompatActivity {
             }
         });
 
-        convertedLayout.setOnClickListener(new View.OnClickListener() {
+        leaseLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), LeedsTablesLayout.class);
-                intent.putExtra("data","converted");
-                intent.putExtra("leedsName","Converted Tasks");
+                Intent intent = new Intent(getApplicationContext(), LeaseHeadPage.class);
                 startActivity(intent);
             }
         });
@@ -172,6 +175,15 @@ public class DashboardActivity extends AppCompatActivity {
                 intent.putExtra("data","active");
                 intent.putExtra("topic","Active Facility ");
                 startActivity(intent);
+            }
+        });
+
+        //refresh button
+        refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GetDataFunction();
+                GetPrecentageDataFunction(date);
             }
         });
 
@@ -218,22 +230,22 @@ public class DashboardActivity extends AppCompatActivity {
                         prospectLeeds = jsonObject.getString("prospecting");
 
                         prospected = jsonObject.getString("convrt_p");
-                        converted = jsonObject.getString("converted");
+                        //converted = jsonObject.getString("converted");
                         inprogress = jsonObject.getString("inp");
                         approval = jsonObject.getString("pcnt");
                         activityFacility = jsonObject.getString("cnt");
 
                         //get sum of leeds
-                        int sum = Integer.parseInt(hotLeeds)+Integer.parseInt(coldLeeds)+Integer.parseInt(warmLeeds)+Integer.parseInt(prospectLeeds);
-                        sumLeeds = String.valueOf(sum);
+                        //int sum = Integer.parseInt(hotLeeds)+Integer.parseInt(coldLeeds)+Integer.parseInt(warmLeeds)+Integer.parseInt(prospectLeeds);
+                        //sumLeeds = String.valueOf(sum);
 
                         todayTv.setText(today);
                         delayTv.setText(delay);
                         upcomingTv.setText(upcoming);
-                        leedsTv.setText(sumLeeds);
+                        //leedsTv.setText(sumLeeds);
                         inprogressTv.setText(inprogress);
                         pendingTv.setText(approval);
-                        convertedTv.setText(converted);
+                        //convertedTv.setText(converted);
                         rejectedTv.setText(activityFacility);
                     }
                     else{
@@ -291,6 +303,7 @@ public class DashboardActivity extends AppCompatActivity {
                 ytdPro.setVisibility(View.VISIBLE);
                 nplPro.setVisibility(View.VISIBLE);
 
+                /*
                 try {
                     JSONObject jsonObject = new JSONObject(httpResponseMsg);
                     if(jsonObject!=null) {
@@ -337,6 +350,8 @@ public class DashboardActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
+                 */
+
 
             }
 
@@ -368,6 +383,12 @@ public class DashboardActivity extends AppCompatActivity {
             protected void onPreExecute() {
                 super.onPreExecute();
 
+                progressDialog = new ProgressDialog(DashboardActivity.this);
+                progressDialog.show();
+                progressDialog.setContentView(R.layout.progress_layout);
+                progressDialog.getWindow().setBackgroundDrawableResource(
+                        android.R.color.transparent
+                );
             }
 
             @Override

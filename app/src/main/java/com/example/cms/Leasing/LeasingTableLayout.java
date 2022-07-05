@@ -1,8 +1,11 @@
-package com.example.cms.Leeds;
+package com.example.cms.Leasing;
 
 import static com.example.cms.LoginActivity.Username;
 
-import android.app.ProgressDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -11,13 +14,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
+import com.example.cms.Adapter.LeaseTableAdapter;
 import com.example.cms.Adapter.LeedsTableAdapter;
+import com.example.cms.HelperClass.MultipartRequest;
 import com.example.cms.HelperClass.PostRequest;
+import com.example.cms.Leeds.LeedsTablesLayout;
 import com.example.cms.LoginActivity;
+import com.example.cms.Models.LeaseTableModel;
 import com.example.cms.Models.LeedsTableModel;
 import com.example.cms.R;
 
@@ -32,33 +35,34 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-public class LeedsTablesLayout extends AppCompatActivity {
+public class LeasingTableLayout extends AppCompatActivity {
 
-
-    String loadUrl = "http://192.168.40.7:8080/cms/ro_dashboard/allocated_contracts_data?";
+    String loadUrl = "http://192.168.40.7:8080/cms/API/Leasing";
     String ServerLogoutURL = "http://192.168.40.7:8080/cms/logout?";
     URL url;
     String finalResult;
     HashMap<String,String> hashMap = new HashMap<>();
-    ProgressDialog progressDialog;
+    HashMap<String,JSONObject> jsonhashMap = new HashMap<>();
 
     public List<Arrays> hotleedsdata = new ArrayList<Arrays>();
 
     String passingData,profilename,topic;
     TextView leedsTopic,profilenameTv,logout,newlead;
 
-    public static String id,nic,name,mobile,product,followup,address,userid;
+    public static String userid,applicationNo,customer,product,asset,action,status;
 
     RecyclerView recyclerView;
-    List<LeedsTableModel> list = new ArrayList<>();
-    LeedsTableAdapter adapter;
+    List<LeaseTableModel> list = new ArrayList<>();
+    LeaseTableAdapter adapter;
     ImageView back;
+    JSONObject data;
+    JSONArray array1,array2,array3;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_leeds_table_layout);
+        setContentView(R.layout.activity_leasing_table_layout);
 
         //get profile name
         profilename = Username;
@@ -78,8 +82,8 @@ public class LeedsTablesLayout extends AppCompatActivity {
         leedsTopic = findViewById(R.id.leedstopic);
 
         passingData = getIntent().getStringExtra("data");
-        topic = getIntent().getStringExtra("leedsName");
-        leedsTopic.setText(topic);
+        leedsTopic.setText(passingData);
+
 
         recyclerView = findViewById(R.id.coldrecycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
@@ -96,20 +100,9 @@ public class LeedsTablesLayout extends AppCompatActivity {
             }
         });
 
-        //new lead
-        newlead = findViewById(R.id.newlead);
-        newlead.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), NewLeadLayout.class);
-                intent.putExtra("topic", "New Lead");
-                startActivity(intent);
-
-            }
-        });
-
     }
 
+    //load data into tables
     public void GetLeedsDataFunction(String date){
 
         class ColdLeedsFunctionClass extends AsyncTask<String,Void,String> {
@@ -126,6 +119,7 @@ public class LeedsTablesLayout extends AppCompatActivity {
                 super.onPostExecute(httpResponseMsg);
                 System.out.println(httpResponseMsg);
 
+
                 try {
                     JSONObject jsonObject = new JSONObject(httpResponseMsg);
                     JSONArray array = jsonObject.getJSONArray("rows");
@@ -135,26 +129,28 @@ public class LeedsTablesLayout extends AppCompatActivity {
                     for(int i=0; i<array.length();i++){
                         JSONArray jarray = array.getJSONArray(i);
 
-                        id = jarray.getString(0);
-                        nic = jarray.getString(1);
-                        name = jarray.getString(2);
-                        mobile = jarray.getString(3);
-                        product = jarray.getString(5);
-                        followup = jarray.getString(6);
-                        address = jarray.getString(7);
-                        userid = jarray.getString(8);
+                        userid = jarray.getString(0);
+                        applicationNo = jarray.getString(1);
+                        customer = jarray.getString(2);
+                        product = jarray.getString(3);
+                        asset = jarray.getString(4);
+                        action = jarray.getString(5);
+                        status = jarray.getString(6);
 
-                        LeedsTableModel leedsTableModel = new LeedsTableModel(id,nic,name,mobile,product,followup,address,userid,topic);
-                        list.add(leedsTableModel);
+                        LeaseTableModel leaseTableModel = new LeaseTableModel(userid,applicationNo,customer,product,asset,action,status);
+                        list.add(leaseTableModel);
+                        System.out.println(asset);
 
                     }
-                    adapter = new LeedsTableAdapter(LeedsTablesLayout.this,list);
+                    adapter = new LeaseTableAdapter(LeasingTableLayout.this,list);
                     recyclerView.setAdapter(adapter);
-                    
+
 
                 }catch (JSONException e) {
                     e.printStackTrace();
                 }
+
+
 
             }
 
@@ -166,7 +162,8 @@ public class LeedsTablesLayout extends AppCompatActivity {
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 }
-                hashMap.put("d",params[0]);
+                hashMap.put("val",params[0]);
+                System.out.println(hashMap);
 
                 finalResult = PostRequest.postRequest(url,hashMap);
 
@@ -179,6 +176,8 @@ public class LeedsTablesLayout extends AppCompatActivity {
     }
 
 
+
+    //logout
     public void logout(){
         class LogoutFunctionClass extends AsyncTask<String,Void,String> {
 
@@ -186,12 +185,6 @@ public class LeedsTablesLayout extends AppCompatActivity {
             protected void onPreExecute() {
                 super.onPreExecute();
 
-                progressDialog = new ProgressDialog(LeedsTablesLayout.this);
-                progressDialog.show();
-                progressDialog.setContentView(R.layout.progress_layout);
-                progressDialog.getWindow().setBackgroundDrawableResource(
-                        android.R.color.transparent
-                );
             }
 
             @Override
@@ -232,5 +225,4 @@ public class LeedsTablesLayout extends AppCompatActivity {
         logoutFunctionClass.execute();
 
     }
-
 }

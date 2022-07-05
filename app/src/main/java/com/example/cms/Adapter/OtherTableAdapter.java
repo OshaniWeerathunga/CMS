@@ -62,18 +62,18 @@ public class OtherTableAdapter extends RecyclerView.Adapter<OtherTableAdapter.Vi
             }
         });
 
-        /*
-        holder.moredata.setOnClickListener(new View.OnClickListener() {
+
+        holder.recyclerItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mCtx, MoreDataLoad.class);
-                intent.putExtra("id",tableDataModel.getId());
+                Intent intent = new Intent(mCtx, SanctionLetterDisplay.class);
+                intent.putExtra("userid",otherTableModel.getUserId());
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mCtx.startActivity(intent);
             }
         });
 
-         */
+
 
     }
 

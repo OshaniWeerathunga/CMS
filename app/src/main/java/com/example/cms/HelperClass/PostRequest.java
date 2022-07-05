@@ -255,6 +255,99 @@ public class PostRequest {
 
 
 
+    public static String jsonpostRequest(URL url, HashMap<String, JSONObject> Data) {
+
+        try {
+            URL posturl= url;
+
+            HttpURLConnection httpURLConnection = (HttpURLConnection) posturl.openConnection();
+            httpURLConnection.setInstanceFollowRedirects(false);
+
+            if(cookies!=null && cookies.size()>0){
+                httpURLConnection.setRequestProperty("Cookie", TextUtils.join(";",cookies));
+
+                System.out.printf("cookie sent");
+                System.out.println(cookies);
+            }
+
+            httpURLConnection.setReadTimeout(60000);
+
+            httpURLConnection.setConnectTimeout(60000);
+
+            httpURLConnection.setRequestMethod("POST");
+
+            httpURLConnection.setDoInput(true);
+
+            httpURLConnection.setDoOutput(true);
+
+            OutputStream outputStream = httpURLConnection.getOutputStream();
+
+            BufferedWriter bufferedWriter = new BufferedWriter(
+
+                    new OutputStreamWriter(outputStream, "UTF-8"));
+
+            bufferedWriter.write(jsonFinalDataParse(Data));
+
+            bufferedWriter.flush();
+
+            bufferedWriter.close();
+
+            outputStream.close();
+
+            if (httpURLConnection.getResponseCode() == HttpsURLConnection.HTTP_OK) {
+
+                if(httpURLConnection.getHeaderFields().get("Set-Cookie")!=null){
+                    cookies=httpURLConnection.getHeaderFields().get("Set-Cookie");
+                    System.out.println(httpURLConnection.getHeaderFields());
+                    System.out.printf("cookie received");
+                    System.out.println(cookies);
+                }
+
+                BufferedReader bufferedReader = new BufferedReader(
+                        new InputStreamReader(
+                                httpURLConnection.getInputStream()
+                        )
+                );
+                return bufferedReader.readLine();
+            }
+            else if (httpURLConnection.getResponseCode()>=300 & (httpURLConnection.getResponseCode()<=399)){
+
+                return String.valueOf(httpURLConnection.getResponseCode());
+            }
+            else {
+                return null;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return  null;
+        }
+
+    }
+
+    public static String jsonFinalDataParse(HashMap<String, JSONObject> hashMap2) throws UnsupportedEncodingException {
+
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for(Map.Entry<String, JSONObject> map_entry : hashMap2.entrySet()){
+
+            stringBuilder.append("&");
+
+            stringBuilder.append(URLEncoder.encode(map_entry.getKey(), "UTF-8"));
+
+            stringBuilder.append("=");
+
+            stringBuilder.append(URLEncoder.encode(String.valueOf(map_entry.getValue()), "UTF-8"));
+
+            System.out.println(stringBuilder);
+
+        }
+
+
+        return stringBuilder.toString();
+
+
+    }
 
 
 

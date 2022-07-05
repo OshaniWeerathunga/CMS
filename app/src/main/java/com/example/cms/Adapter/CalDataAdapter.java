@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cms.Models.CalDataModel;
 import com.example.cms.Models.LeedsTableModel;
+import com.example.cms.Models.StructuredRecordList;
 import com.example.cms.R;
 
 import java.util.List;
@@ -22,10 +23,13 @@ public class CalDataAdapter extends RecyclerView.Adapter<CalDataAdapter.ViewHold
     private Context mCtx;
     private List<CalDataModel> calList;
 
+    private List<StructuredRecordList> list;
+
     public CalDataAdapter(Context mCtx, List<CalDataModel> calList) {
         this.mCtx = mCtx;
         this.calList = calList;
     }
+
 
     @NonNull
     @Override

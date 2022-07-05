@@ -40,6 +40,7 @@ public class LeedsHeadPage extends AppCompatActivity {
     String hot,warm,cold,prospect;
     ProgressDialog progressDialog;
     ImageView back;
+    Button refresh;
 
     String LeaseDataURL = "http://192.168.40.7:8080/cms/ro_dashboard/allocated_contracts_count?";
     String PrecentageUrl = "http://192.168.40.7:8080/cms/company?";
@@ -110,6 +111,15 @@ public class LeedsHeadPage extends AppCompatActivity {
         nplPro = findViewById(R.id.nplprogressBar);
 
         GetLeaseDataFunction();
+
+        //click refresh button
+        refresh = findViewById(R.id.refresh);
+        refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GetLeaseDataFunction();
+            }
+        });
 
         hotleeds.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -241,6 +251,12 @@ public class LeedsHeadPage extends AppCompatActivity {
             protected void onPreExecute() {
                 super.onPreExecute();
 
+                progressDialog = new ProgressDialog(LeedsHeadPage.this);
+                progressDialog.show();
+                progressDialog.setContentView(R.layout.progress_layout);
+                progressDialog.getWindow().setBackgroundDrawableResource(
+                        android.R.color.transparent
+                );
             }
 
             @Override
@@ -280,5 +296,12 @@ public class LeedsHeadPage extends AppCompatActivity {
         LogoutFunctionClass logoutFunctionClass = new LogoutFunctionClass();
         logoutFunctionClass.execute();
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

@@ -50,7 +50,21 @@ public class LeedsTableAdapter extends RecyclerView.Adapter<LeedsTableAdapter.Vi
         holder.followup.setText(leedsTableModel.getFollowup());
         holder.address.setText(leedsTableModel.getAddress());
 
+        //click edit button open edit form
         holder.editform.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mCtx, LeedsUpdate.class);
+                intent.putExtra("id", leedsTableModel.getUserId());
+                intent.putExtra("leedsId", leedsTableModel.getId());
+                intent.putExtra("topic", leedsTableModel.getTopic());
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                mCtx.startActivity(intent);
+            }
+        });
+
+        //click layout open edit form
+        holder.recyclerItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mCtx, LeedsUpdate.class);

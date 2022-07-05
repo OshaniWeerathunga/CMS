@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/lvTemplate"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/light_purple"
+    android:orientation="horizontal"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/txtApplication"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="1dp"
+        android:gravity="left"
+        android:text="Application No"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/txtCustomer"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="1dp"
+        android:gravity="left"
+        android:text="Customer"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/txtProduct"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="1dp"
+        android:gravity="left"
+        android:text="Product"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/txtAsset"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="1dp"
+        android:gravity="left"
+        android:text="Asset"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/txtLastAction"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="1dp"
+        android:gravity="left"
+        android:text="Last Action"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/txtStatus"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="1dp"
+        android:gravity="center"
+        android:text="Status"
+        android:background="@drawable/prospectleeds_bg"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="@color/black"/>
+
+    <LinearLayout
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:weightSum="2">
+
+        <ImageView
+            android:visibility="invisible"
+            android:id="@+id/imgEdit"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="1dp"
+            android:src="@drawable/edit"
+            android:layout_weight="1"/>
+
+        <ImageView
+            android:id="@+id/imgSanction"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="1dp"
+            android:src="@drawable/sanction"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

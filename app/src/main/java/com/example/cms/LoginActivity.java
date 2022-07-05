@@ -126,7 +126,7 @@ public class LoginActivity extends AppCompatActivity {
 
                         Username = jsonObject.getString("user");
 
-                        Intent intent = new Intent(getApplicationContext(), Calculator.class);
+                        Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
                         //intent.putExtra(Username,user);
                         startActivity(intent);
                         finish();

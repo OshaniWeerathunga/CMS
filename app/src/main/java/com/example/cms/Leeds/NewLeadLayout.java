@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -21,12 +22,14 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.cms.HelperClass.MultipartRequest;
 import com.example.cms.HelperClass.PostRequest;
+import com.example.cms.LeedsHeadPage;
 import com.example.cms.LoginActivity;
 import com.example.cms.R;
 
@@ -58,7 +61,7 @@ public class NewLeadLayout extends AppCompatActivity implements AdapterView.OnIt
     URL url;
     String finalResult;
     DatePickerDialog.OnDateSetListener setListener;
-
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -216,7 +219,9 @@ public class NewLeadLayout extends AppCompatActivity implements AdapterView.OnIt
         ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onBackPressed();
+                Intent intent = new Intent(getApplicationContext(), LeedsHeadPage.class);
+                startActivity(intent);
+                finish();
                 dialog.dismiss();
             }
         });
@@ -334,37 +339,200 @@ public class NewLeadLayout extends AppCompatActivity implements AdapterView.OnIt
         else if (parent.getId() == R.id.mkofficer) {
             String dropdownTerm = parent.getItemAtPosition(position).toString();
             switch (dropdownTerm) {
-                case "Thilina Lakmal":
+
+                case "Poorna Prathiba":
                     spinnermkofficerHolder = "4";
                     break;
-                case "Ranthilaka Durayalage Sagara Saman Kumara":
-                    spinnermkofficerHolder = "1";
+                case "Dinesh Wickramasinghe":
+                    spinnermkofficerHolder = "12";
                     break;
-                case "Dinesh Wickremasinghe":
-                    spinnermkofficerHolder = "2";
+                case "Sirimal Priyantha":
+                    spinnermkofficerHolder = "48";
                     break;
-                case "Sanjaya Liyanage":
-                    spinnermkofficerHolder = "3";
+                case "Rangana Sampath Kumara":
+                    spinnermkofficerHolder = "50";
                     break;
-                case "Rajapaksha Arachchillage Akila Chanaka":
-                    spinnermkofficerHolder = "5";
+                case "Sagara Saman  Kumara":
+                    spinnermkofficerHolder = "51";
                     break;
-                case "Henda Witharanage Kusal Dewapriya":
-                    spinnermkofficerHolder = "6";
+                case "Thilina Lakmal":
+                    spinnermkofficerHolder = "53";
                     break;
-                case "Bambarawana Liayanagamage Aruna Ravindra Rathnayaka":
-                    spinnermkofficerHolder = "7";
+                case "Steve Perera":
+                    spinnermkofficerHolder = "55";
                     break;
-                case "Amila Rumes Weerasinghe":
-                    spinnermkofficerHolder = "8";
+                case "Sushan Sugandhika Somasiri":
+                    spinnermkofficerHolder = "264";
                     break;
-                case "Jayan Harshana Mallikaarchchi":
-                    spinnermkofficerHolder = "9";
+                case "Cherin Jayasekara":
+                    spinnermkofficerHolder = "268";
                     break;
-                case "Kotte Muhandiramge Isuru Malinda  Rodrigo":
-                    spinnermkofficerHolder = "10";
+                case "Ashan Saranga":
+                    spinnermkofficerHolder = "270";
+                    break;
+                case "Sumudu Manoj Rukshan":
+                    spinnermkofficerHolder = "271";
                     break;
 
+                case "Gehan Ranishika Fernando":
+                    spinnermkofficerHolder = "274";
+                    break;
+                case "Chamli Udayakumara":
+                    spinnermkofficerHolder = "275";
+                    break;
+                case "Sanjaya Perera":
+                    spinnermkofficerHolder = "276";
+                    break;
+                case "Ishara Udayangana":
+                    spinnermkofficerHolder = "277";
+                    break;
+                case "Ravin Dilshan":
+                    spinnermkofficerHolder = "279";
+                    break;
+                case "Sudheera Chathuranga":
+                    spinnermkofficerHolder = "280";
+                    break;
+                case "Priyashad Madhusanka":
+                    spinnermkofficerHolder = "284";
+                    break;
+                case "Lalith Kumara Siriwardana":
+                    spinnermkofficerHolder = "285";
+                    break;
+                case "Indika Senarath Bandara":
+                    spinnermkofficerHolder = "286";
+                    break;
+                case "Keshawa De Soysa":
+                    spinnermkofficerHolder = "288";
+                    break;
+                case "Vinod Manula":
+                    spinnermkofficerHolder = "289";
+                    break;
+                case "Himal Ruvinda":
+                    spinnermkofficerHolder = "290";
+                    break;
+                case "Sanjaya Lakmal":
+                    spinnermkofficerHolder = "296";
+                    break;
+                case "Harsha Chamara besil":
+                    spinnermkofficerHolder = "297";
+                    break;
+                case "Sasitha Sarannga":
+                    spinnermkofficerHolder = "300";
+                    break;
+                case "Anuruddha Perera":
+                    spinnermkofficerHolder = "302";
+                    break;
+                case "Chanaka dhananjaya Weediyawaththa":
+                    spinnermkofficerHolder = "305";
+                    break;
+                case "Sathsara Lakmal Kumara":
+                    spinnermkofficerHolder = "309";
+                    break;
+                case "Akila Chanaka":
+                    spinnermkofficerHolder = "311";
+                    break;
+                case "Amila Dhanushka":
+                    spinnermkofficerHolder = "319";
+                    break;
+                case "Anusha Perera":
+                    spinnermkofficerHolder = "320";
+                    break;
+                case "Asintha Kumara":
+                    spinnermkofficerHolder = "322";
+                    break;
+                case "Kusal Dewapriya":
+                    spinnermkofficerHolder = "323";
+                    break;
+                case "Tharooka Deshan":
+                    spinnermkofficerHolder = "326";
+                    break;
+                case "Jayan Harshan":
+                    spinnermkofficerHolder = "328";
+                    break;
+                case "Isuru Gihan":
+                    spinnermkofficerHolder = "329";
+                    break;
+                case "Thushara Wickramasingha":
+                    spinnermkofficerHolder = "330";
+                    break;
+                case "Aruna Ravindra Rathnayaka":
+                    spinnermkofficerHolder = "332";
+                    break;
+                case "Sachinda Randimal":
+                    spinnermkofficerHolder = "334";
+                    break;
+                case "Deeptha Chiranthaka":
+                    spinnermkofficerHolder = "335";
+                    break;
+                case "Hishan Shamika":
+                    spinnermkofficerHolder = "336";
+                    break;
+                case "Pradeep Nishantha Perera":
+                    spinnermkofficerHolder = "337";
+                    break;
+                case "Lahiru Madusanka Pradeep":
+                    spinnermkofficerHolder = "338";
+                    break;
+                case "Shihan Vidushaka":
+                    spinnermkofficerHolder = "340";
+                    break;
+                case "Isuru Malinda":
+                    spinnermkofficerHolder = "341";
+                    break;
+                case "Roshan Maduwantha":
+                    spinnermkofficerHolder = "343";
+                    break;
+                case "Manjula Wickramasinghage":
+                    spinnermkofficerHolder = "344";
+                    break;
+                case "janith":
+                    spinnermkofficerHolder = "367";
+                    break;
+                case "Kolitha Sudamma Senarath":
+                    spinnermkofficerHolder = "373";
+                    break;
+                case "Rajith Lasitha Bandara":
+                    spinnermkofficerHolder = "374";
+                    break;
+                case "Rajitha Nuwan Kaluararchchi":
+                    spinnermkofficerHolder = "378";
+                    break;
+                case "Lasan Madhubhasha Karunadhipathi":
+                    spinnermkofficerHolder = "385";
+                    break;
+                case "Primal Sandika":
+                    spinnermkofficerHolder = "386";
+                    break;
+                case "Viraj Chathuranga":
+                    spinnermkofficerHolder = "389";
+                    break;
+                case "Rajitha Prasanna Weerasiri":
+                    spinnermkofficerHolder = "394";
+                    break;
+                case "Kasun Hansana Kumara":
+                    spinnermkofficerHolder = "395";
+                    break;
+                case "Manoj Rukshan":
+                    spinnermkofficerHolder = "398";
+                    break;
+                case "Hemantha Adikari":
+                    spinnermkofficerHolder = "400";
+                    break;
+                case "Rangana Nuwan Priyadharshana":
+                    spinnermkofficerHolder = "401";
+                    break;
+                case "Chandika Jayanjan":
+                    spinnermkofficerHolder = "418";
+                    break;
+                case "Manoj Wijethunga":
+                    spinnermkofficerHolder = "421";
+                    break;
+                case "Chamara Sandaruwan":
+                    spinnermkofficerHolder = "422";
+                    break;
+                case "Indra Kumar":
+                    spinnermkofficerHolder = "423";
+                    break;
 
             }
         }
@@ -636,7 +804,7 @@ public class NewLeadLayout extends AppCompatActivity implements AdapterView.OnIt
 
                     } else {
 
-                        Toast.makeText(getApplicationContext(), "Lead not updated", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Lead not added", Toast.LENGTH_LONG).show();
                     }
                 }catch (JSONException e) {
                     Toast.makeText(getApplicationContext(), "Please try again.", Toast.LENGTH_LONG).show();
@@ -712,6 +880,13 @@ public class NewLeadLayout extends AppCompatActivity implements AdapterView.OnIt
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
+
+                progressDialog = new ProgressDialog(NewLeadLayout.this);
+                progressDialog.show();
+                progressDialog.setContentView(R.layout.progress_layout);
+                progressDialog.getWindow().setBackgroundDrawableResource(
+                        android.R.color.transparent
+                );
 
             }
 

@@ -159,7 +159,7 @@
                     android:layout_weight="2"
                     android:gravity="center_vertical"
                     android:paddingLeft="10dp"
-                    android:text="Leed ID :"
+                    android:text="Lead ID :"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
@@ -648,6 +648,7 @@
                 android:layout_marginTop="10dp">
 
                 <TextView
+                    android:id="@+id/stageTV"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

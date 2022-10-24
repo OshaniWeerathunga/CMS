@@ -18,7 +18,7 @@ import java.util.HashMap;
 public class AddEditLeasing extends AppCompatActivity {
 
     String id;
-    String EachUserLeedsloadUrl = "http://192.168.40.7:8080/cms/leasing/customerDetails?";
+    String EachUserLeedsloadUrl = "http://cms.fintrex.lk/leasing/customerDetails?";
     URL url;
     String finalResult;
     HashMap<String,String> hashMap = new HashMap<>();
@@ -48,7 +48,7 @@ public class AddEditLeasing extends AppCompatActivity {
             protected void onPostExecute(String httpResponseMsg) {
 
                 super.onPostExecute(httpResponseMsg);
-                System.out.println(httpResponseMsg);
+                System.out.println("leasing list edit form     "+httpResponseMsg);
 
                 /*
                 try {

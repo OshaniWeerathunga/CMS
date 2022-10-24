@@ -39,7 +39,7 @@ public class SanctionLetterDisplay extends AppCompatActivity {
         id = getIntent().getStringExtra("userid");
 
         //create url by adding ID
-        url = "http://192.168.40.7:8080/cms/view-lease?id=" + id;
+        url = "http://cms.fintrex.lk/view-lease?id=" + id;
         //url = "http://192.168.40.7:8080/cms/cusfile/cus_35_3_file";
 
 

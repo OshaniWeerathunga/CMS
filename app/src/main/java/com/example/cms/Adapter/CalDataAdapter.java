@@ -16,6 +16,7 @@ import com.example.cms.Models.LeedsTableModel;
 import com.example.cms.Models.StructuredRecordList;
 import com.example.cms.R;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class CalDataAdapter extends RecyclerView.Adapter<CalDataAdapter.ViewHolder>{
@@ -44,11 +45,14 @@ public class CalDataAdapter extends RecyclerView.Adapter<CalDataAdapter.ViewHold
 
         CalDataModel calDataModel = calList.get(position);
 
-        holder.capital.setText(calDataModel.getCapital());
-        holder.month.setText(calDataModel.getMonth());
-        holder.intrest.setText(calDataModel.getIntrest());
-        holder.outstanding.setText(calDataModel.getOutstanding());
-        holder.installment.setText(calDataModel.getInstallment());
+        //format to number type
+        DecimalFormat formatter = new DecimalFormat("#,###.00");
+
+        holder.capital.setText(formatter.format(Float.parseFloat(calDataModel.getCapital())));
+        holder.month.setText(formatter.format(Float.parseFloat(calDataModel.getMonth())));
+        holder.intrest.setText(formatter.format(Float.parseFloat(calDataModel.getIntrest())));
+        holder.outstanding.setText(formatter.format(Float.parseFloat(calDataModel.getOutstanding())));
+        holder.installment.setText(formatter.format(Float.parseFloat(calDataModel.getInstallment())));
     }
 
     @Override

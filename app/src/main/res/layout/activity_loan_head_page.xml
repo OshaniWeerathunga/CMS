@@ -37,7 +37,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="Lease"
+            android:text="Loan"
             android:gravity="center"
             android:textColor="@color/white"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -120,25 +120,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
-        app:layout_constraintVertical_bias="0">
+        app:layout_constraintVertical_bias="0.1">
 
         <LinearLayout
-            android:id="@+id/progressLeaseLayout"
+            android:id="@+id/progressLoanLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_margin="10dp"
             android:layout_weight="1"
             android:background="@drawable/hotleeds_bg"
             android:gravity="center"
-            android:orientation="horizontal"
-            android:padding="20dp"
+            android:orientation="vertical"
             android:weightSum="2">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center|left"
+                android:gravity="center"
                 android:padding="10dp"
                 android:text="In Progress"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -146,7 +145,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/inprogressLeaseCount"
+                android:id="@+id/inprogressLoanCount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -160,170 +159,21 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/creditLeaseLayout"
+            android:id="@+id/pendingLoanLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
             android:layout_weight="1"
             android:background="@drawable/warmleeds_bg"
             android:gravity="center"
-            android:orientation="horizontal"
-            android:padding="20dp"
+            android:orientation="vertical"
             android:weightSum="2">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center|left"
-                android:padding="10dp"
-                android:text="Credit Approval"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/creditLeasecount"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
                 android:gravity="center"
-                android:padding="10dp"
-                android:text="-"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/DeviationLeaseLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:background="@drawable/prospectleeds_bg"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:padding="20dp"
-            android:weightSum="2">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center|left"
-                android:padding="10dp"
-                android:text="Deviation Approval"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/deviationLeasecount"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:padding="10dp"
-                android:text="-"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/PendingVerificationLeaseLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:background="@drawable/coldleeds_bg"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:padding="20dp"
-            android:weightSum="2">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center|left"
-                android:padding="10dp"
-                android:text="Pending Verification"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/pendingVerificationLeasecount"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:padding="10dp"
-                android:text="-"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/InsuranceConfirmationLeaseLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:background="@drawable/hotleeds_bg"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:padding="20dp"
-            android:weightSum="2">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center|left"
-                android:padding="10dp"
-                android:text="Insurance Confirmation"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/insuranceConfirmationLeasecount"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:padding="10dp"
-                android:text="-"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/pendingLeaseLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:background="@drawable/warmleeds_bg"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:padding="20dp"
-            android:weightSum="2">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center|left"
                 android:padding="10dp"
                 android:text="Pending Activation"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -331,7 +181,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/pendingLeasecount"
+                android:id="@+id/pendingLoancount"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -345,96 +195,21 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/documentPendingLeaseLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:background="@drawable/prospectleeds_bg"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:padding="20dp"
-            android:weightSum="2">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center|left"
-                android:padding="10dp"
-                android:text="Document Pending"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/documentPendingLeasecount"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:padding="10dp"
-                android:text="-"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/paymentPendingLeaseLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:background="@drawable/card_bg"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:padding="20dp"
-            android:weightSum="2">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center|left"
-                android:padding="10dp"
-                android:text="Payment Pending"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/paymentPendingLeasecount"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:padding="10dp"
-                android:text="-"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/activeLeaseLayout"
+            android:id="@+id/activeLoanLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
             android:layout_weight="1"
             android:background="@drawable/coldleeds_bg"
             android:gravity="center"
-            android:orientation="horizontal"
-            android:padding="20dp"
+            android:orientation="vertical"
             android:weightSum="2">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center|left"
+                android:gravity="center"
                 android:padding="10dp"
                 android:text="Active"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -442,7 +217,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/activeLeasecount"
+                android:id="@+id/activeLoancount"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -456,22 +231,21 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/rejectLeaseLayout"
+            android:id="@+id/rejectLoanLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
             android:layout_weight="1"
-            android:background="@drawable/hotleeds_bg"
+            android:background="@drawable/card_bg"
             android:gravity="center"
-            android:orientation="horizontal"
-            android:padding="20dp"
+            android:orientation="vertical"
             android:weightSum="2">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center|left"
+                android:gravity="center"
                 android:padding="10dp"
                 android:text="Rejected"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -479,7 +253,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/rejectedLeasecount"
+                android:id="@+id/rejectedLoancount"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -493,6 +267,4 @@
         </LinearLayout>
 
     </LinearLayout>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

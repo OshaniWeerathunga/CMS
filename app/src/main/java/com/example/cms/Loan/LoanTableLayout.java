@@ -1,10 +1,6 @@
-package com.example.cms.Leasing;
+package com.example.cms.Loan;
 
 import static com.example.cms.LoginActivity.Username;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -14,14 +10,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.cms.Adapter.LeaseTableAdapter;
-import com.example.cms.Adapter.LeedsTableAdapter;
-import com.example.cms.HelperClass.MultipartRequest;
+import com.example.cms.Adapter.LoanTableAdapter;
 import com.example.cms.HelperClass.PostRequest;
-import com.example.cms.Leeds.LeedsTablesLayout;
 import com.example.cms.LoginActivity;
 import com.example.cms.Models.LeaseTableModel;
-import com.example.cms.Models.LeedsTableModel;
+import com.example.cms.Models.LoanTableModel;
 import com.example.cms.R;
 
 import org.json.JSONArray;
@@ -35,9 +33,9 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-public class LeasingTableLayout extends AppCompatActivity {
+public class LoanTableLayout extends AppCompatActivity {
 
-    String loadUrl = "http://cms.fintrex.lk/API/Leasing";
+    String loadUrl = "http://cms.fintrex.lk/API/Loan";
     String ServerLogoutURL = "http://cms.fintrex.lk/logout?";
     URL url;
     String finalResult;
@@ -49,11 +47,11 @@ public class LeasingTableLayout extends AppCompatActivity {
     String passingData,profilename,topic;
     TextView leedsTopic,profilenameTv,logout,newlead;
 
-    public static String userid,applicationNo,customer,product,asset,action,status;
+    public static String userid,applicationNo,customer,product,asset,action,status,proposal,lastaction;
 
     RecyclerView recyclerView;
-    List<LeaseTableModel> list = new ArrayList<>();
-    LeaseTableAdapter adapter;
+    List<LoanTableModel> list = new ArrayList<>();
+    LoanTableAdapter adapter;
     ImageView back;
     JSONObject data;
     JSONArray array1,array2,array3;
@@ -62,7 +60,7 @@ public class LeasingTableLayout extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_leasing_table_layout);
+        setContentView(R.layout.activity_loan_table_layout);
 
         //get profile name
         profilename = Username;
@@ -117,7 +115,7 @@ public class LeasingTableLayout extends AppCompatActivity {
             protected void onPostExecute(String httpResponseMsg) {
 
                 super.onPostExecute(httpResponseMsg);
-                System.out.println(httpResponseMsg);
+                System.out.println("loan table data ----- "+httpResponseMsg);
 
 
                 try {
@@ -131,24 +129,24 @@ public class LeasingTableLayout extends AppCompatActivity {
 
                         userid = jarray.getString(0);
                         applicationNo = jarray.getString(1);
-                        customer = jarray.getString(2);
-                        product = jarray.getString(3);
-                        asset = jarray.getString(4);
-                        action = jarray.getString(5);
+                        proposal = jarray.getString(2);
+                        customer = jarray.getString(3);
+                        product = jarray.getString(4);
+                        lastaction = jarray.getString(5);
                         status = jarray.getString(6);
 
-                        LeaseTableModel leaseTableModel = new LeaseTableModel(userid,applicationNo,customer,product,asset,action,status);
-                        list.add(leaseTableModel);
-                        System.out.println(asset);
+                        LoanTableModel loanTableModel = new LoanTableModel(userid,applicationNo,proposal,customer,product,lastaction,status);
+                        list.add(loanTableModel);
 
                     }
-                    adapter = new LeaseTableAdapter(LeasingTableLayout.this,list);
+                    adapter = new LoanTableAdapter(LoanTableLayout.this,list);
                     recyclerView.setAdapter(adapter);
 
 
                 }catch (JSONException e) {
                     e.printStackTrace();
                 }
+
 
 
 
@@ -162,7 +160,7 @@ public class LeasingTableLayout extends AppCompatActivity {
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 }
-                hashMap.put("val",params[0]);
+                hashMap.put("status",params[0]);
                 System.out.println(hashMap);
 
                 finalResult = PostRequest.postRequest(url,hashMap);

@@ -37,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
     String finalResult ;
     HashMap<String,String> hashMap = new HashMap<>();
     URL url;
-    String ServerLoginURL = "http://192.168.40.7:8080/cms/login?";
+    String ServerLoginURL = "http://cms.fintrex.lk/login?";
     public static String Username = "username";
 
 
@@ -53,10 +53,6 @@ public class LoginActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                //Intent intent = new Intent(LoginActivity.this,DashboardActivity.class);
-                //startActivity(intent);
-                //finish();
 
                 GetCheckEditTextIsEmptyOrNot();
 
@@ -118,8 +114,6 @@ public class LoginActivity extends AppCompatActivity {
 
                 progressDialog.dismiss();
 
-                //Toast.makeText(LoginScreen.this, httpResponseMsg, Toast.LENGTH_LONG).show();
-
                 try {
                     JSONObject jsonObject = new JSONObject(httpResponseMsg);
                     if (jsonObject.getString("status").equals("ok")) {
@@ -166,6 +160,7 @@ public class LoginActivity extends AppCompatActivity {
         LoginFunctionClass loginFunctionClass = new LoginFunctionClass();
         loginFunctionClass.execute(username,password);
     }
+
 
     private boolean validateUsername(){
         String val = username.getText().toString();

@@ -11,6 +11,8 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -38,11 +40,14 @@ import org.json.JSONObject;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.AbstractCollection;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 public class Calculator extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -58,11 +63,11 @@ public class Calculator extends AppCompatActivity implements AdapterView.OnItemS
     ArrayAdapter adapter;
     ArrayList<String> productList = new ArrayList<String>();
     ArrayList<String> productValueList = new ArrayList<String>();
-    String ServerLogoutURL = "http://192.168.40.7:8080/cms/logout?";
-    String ServerloadRateURL = "http://192.168.40.7:8080/cms/leasing/charges?";
-    String loadProductListURL = "http://192.168.40.7:8080/cms/MobileApp/getMobileProductList";
-    String loadCalculatorURL = "http://192.168.40.7:8080/cms/MobileApp/getMobileTrialCal";
-    String UploadUrl = "http://192.168.40.7:8080/cms/lead/update?";
+    String ServerLogoutURL = "http://cms.fintrex.lk/logout?";
+    String ServerloadRateURL = "http://cms.fintrex.lk/leasing/charges?";
+    String loadProductListURL = "http://cms.fintrex.lk/MobileApp/getMobileProductList";
+    String loadCalculatorURL = "http://cms.fintrex.lk/MobileApp/getMobileTrialCal";
+    String UploadUrl = "http://cms.fintrex.lk/lead/update?";
 
     URL url;
     String finalResult,productId,repaymentId;
@@ -102,6 +107,9 @@ public class Calculator extends AppCompatActivity implements AdapterView.OnItemS
         rateET = findViewById(R.id.interestRate);
         tenorET = findViewById(R.id.tenor);
         amortizedET = findViewById(R.id.amortized);
+
+        amountET.addTextChangedListener(onTextChangedListener());
+
 
         rentalTV = findViewById(R.id.rental);
         capitalTotTv = findViewById(R.id.txtCapitalTot);
@@ -175,7 +183,7 @@ public class Calculator extends AppCompatActivity implements AdapterView.OnItemS
         cal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String amount = amountET.getText().toString();
+                String amount = amountET.getText().toString().replace(",","");
                 String rate = rateET.getText().toString();
                 String tenor = tenorET.getText().toString();
                 String amortized = amortizedET.getText().toString();
@@ -234,6 +242,48 @@ public class Calculator extends AppCompatActivity implements AdapterView.OnItemS
             }
         });
 
+    }
+
+
+    private TextWatcher onTextChangedListener(){
+        return new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                amountET.removeTextChangedListener(this);
+
+                try {
+                    String originalString = s.toString();
+
+                    Long longval;
+                    if (originalString.contains(",")) {
+                        originalString = originalString.replaceAll(",", "");
+                    }
+                    longval = Long.parseLong(originalString);
+
+                    DecimalFormat formatter = (DecimalFormat) NumberFormat.getInstance(Locale.US);
+                    formatter.applyPattern("#,###,###,###");
+                    String formattedString = formatter.format(longval);
+
+                    //setting text after format to EditText
+                    amountET.setText(formattedString);
+                    amountET.setSelection(amountET.getText().length());
+                } catch (NumberFormatException nfe) {
+                    nfe.printStackTrace();
+                }
+
+                amountET.addTextChangedListener(this);
+            }
+        };
     }
 
     public boolean checkValidity() {
@@ -579,7 +629,8 @@ public class Calculator extends AppCompatActivity implements AdapterView.OnItemS
                     capitalTot = jsonObject.getString("capitaltot");
                     interestTot = jsonObject.getString("interestTot");
                     installmentTot = jsonObject.getString("installmentTot");
-                    rental = jsonObject.getString("rental_amount");
+                    rental = (jsonObject.getString("rental_amount"));
+
 
                     for(int i=0; i<array.length();i++){
                         //JSONArray jarray = array.getJSONArray(i);
@@ -596,10 +647,13 @@ public class Calculator extends AppCompatActivity implements AdapterView.OnItemS
                         callist.add(calDataModel);
 
                     }
-                    rentalTV.setText(rental);
-                    capitalTotTv.setText(capitalTot);
-                    interestTotTv.setText(interestTot);
-                    installmentTotTv.setText(installmentTot);
+                    //format to number type
+                    DecimalFormat formatter = new DecimalFormat("#,###.00");
+
+                    rentalTV.setText(formatter.format(Float.parseFloat(rental)));
+                    capitalTotTv.setText(formatter.format(Float.parseFloat(capitalTot)));
+                    interestTotTv.setText(formatter.format(Float.parseFloat(interestTot)));
+                    installmentTotTv.setText(formatter.format(Float.parseFloat(installmentTot)));
 
                     caladapter = new CalDataAdapter(Calculator.this,callist);
                     recyclerView.setAdapter(caladapter);
@@ -679,10 +733,13 @@ public class Calculator extends AppCompatActivity implements AdapterView.OnItemS
                         callist.add(calDataModel);
 
                     }
-                    rentalTV.setText(rental);
-                    capitalTotTv.setText(capitalTot);
-                    interestTotTv.setText(interestTot);
-                    installmentTotTv.setText(installmentTot);
+                    //format to number type
+                    DecimalFormat formatter = new DecimalFormat("#,###.00");
+
+                    rentalTV.setText(formatter.format(Float.parseFloat(rental)));
+                    capitalTotTv.setText(formatter.format(Float.parseFloat(capitalTot)));
+                    interestTotTv.setText(formatter.format(Float.parseFloat(interestTot)));
+                    installmentTotTv.setText(formatter.format(Float.parseFloat(installmentTot)));
 
                     caladapter = new CalDataAdapter(Calculator.this,callist);
                     recyclerView.setAdapter(caladapter);

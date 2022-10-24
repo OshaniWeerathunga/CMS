@@ -35,8 +35,8 @@ import java.util.List;
 
 public class OtherTablesLayout extends AppCompatActivity {
 
-    String EachUserLeedsloadUrl = "http://192.168.40.7:8080/cms/ro_dashboard/total-leasing?";
-    String ServerLogoutURL = "http://192.168.40.7:8080/cms/logout?";
+    String EachUserLeedsloadUrl = "http://cms.fintrex.lk/ro_dashboard/total-leasing?";
+    String ServerLogoutURL = "http://cms.fintrex.lk/logout?";
     URL url;
     String finalResult;
     HashMap<String,String> hashMap = new HashMap<>();

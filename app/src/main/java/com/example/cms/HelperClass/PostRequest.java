@@ -255,6 +255,77 @@ public class PostRequest {
 
 
 
+
+
+    public static String getDataGET(URL url) {
+
+        try {
+            URL posturl= url;
+
+            HttpURLConnection httpURLConnection = (HttpURLConnection) posturl.openConnection();
+
+            if(cookies!=null && cookies.size()>0){
+                httpURLConnection.setRequestProperty("Cookie", TextUtils.join(";",cookies));
+
+                System.out.printf("cookie sent");
+                System.out.println(cookies);
+            }
+
+            httpURLConnection.setReadTimeout(60000);
+
+            httpURLConnection.setConnectTimeout(60000);
+
+            httpURLConnection.setRequestMethod("GET");
+
+            httpURLConnection.setDoInput(true);
+
+            httpURLConnection.setDoOutput(true);
+
+            OutputStream  outputStream = httpURLConnection.getOutputStream();
+
+            outputStream.close();
+
+            if (httpURLConnection.getResponseCode() == HttpsURLConnection.HTTP_OK) {
+
+                System.out.println(httpURLConnection.getResponseCode());
+
+                if(httpURLConnection.getHeaderFields().get("Set-Cookie")!=null){
+                    cookies=httpURLConnection.getHeaderFields().get("Set-Cookie");
+                    System.out.printf("cookie received");
+                    System.out.println(cookies);
+                }
+
+
+                BufferedReader bufferedReader = new BufferedReader(
+                        new InputStreamReader(
+                                httpURLConnection.getInputStream()
+                        )
+                );
+                return bufferedReader.readLine();
+
+            }
+            else if (httpURLConnection.getResponseCode()>=300 & (httpURLConnection.getResponseCode()<=399)){
+
+                System.out.println(httpURLConnection.getResponseCode());
+
+                String redir = httpURLConnection.getHeaderField("Location");
+                if (redir!=null && redir.equals("login")){
+                    return "auth_fail";
+                }
+                return null;
+            }
+            else {
+                System.out.println(httpURLConnection.getResponseCode());
+
+                return "not 399 or 300";
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+
+    }
+
     public static String jsonpostRequest(URL url, HashMap<String, JSONObject> Data) {
 
         try {

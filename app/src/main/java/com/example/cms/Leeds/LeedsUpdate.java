@@ -57,10 +57,10 @@ public class LeedsUpdate extends AppCompatActivity implements AdapterView.OnItem
     ArrayAdapter<CharSequence> stageadapter,titleadapter,genderadapter,mkofficeradapter,branchadapter,vbranchadapter,channeladapter,productadapter;
 
 
-    String EachUserLeedsloadUrl = "http://192.168.40.7:8080/cms/lead/loadData?";
-    String UploadUrl = "http://192.168.40.7:8080/cms/lead/update?";
-    String ServerLogoutURL = "http://192.168.40.7:8080/cms/logout?";
-    String LoadMarketOfficersURL = "http://192.168.40.7:8080/cms/lead/mkofficer?";
+    String EachUserLeedsloadUrl = "http://cms.fintrex.lk/lead/loadData?";
+    String UploadUrl = "http://cms.fintrex.lk/lead/update?";
+    String ServerLogoutURL = "http://cms.fintrex.lk/logout?";
+    String LoadMarketOfficersURL = "http://cms.fintrex.lk/lead/mkofficer?";
     URL url;
     JSONObject data,datamain;
     String finalResult;

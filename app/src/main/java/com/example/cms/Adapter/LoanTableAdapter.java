@@ -13,23 +13,21 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.cms.Leasing.AddEditLeasing;
-import com.example.cms.Leeds.LeedsUpdate;
 import com.example.cms.Leeds.SanctionLetterDisplay;
 import com.example.cms.Models.LeaseTableModel;
-import com.example.cms.Models.LeedsTableModel;
+import com.example.cms.Models.LoanTableModel;
 import com.example.cms.R;
 
 import java.util.List;
 
-public class LeaseTableAdapter extends RecyclerView.Adapter<LeaseTableAdapter.ViewHolder> {
+public class LoanTableAdapter extends RecyclerView.Adapter<LoanTableAdapter.ViewHolder> {
 
     private Context mCtx;
-    private List<LeaseTableModel> leaseList;
+    private List<LoanTableModel> loanList;
 
-    public LeaseTableAdapter(Context mCtx, List<LeaseTableModel> leaseList) {
+    public LoanTableAdapter(Context mCtx, List<LoanTableModel> loanList) {
         this.mCtx = mCtx;
-        this.leaseList = leaseList;
+        this.loanList = loanList;
     }
 
 
@@ -37,33 +35,29 @@ public class LeaseTableAdapter extends RecyclerView.Adapter<LeaseTableAdapter.Vi
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater=LayoutInflater.from(mCtx);
-        View view = inflater.inflate(R.layout.leasing_list,null);
-        return new LeaseTableAdapter.ViewHolder(view);
+        View view = inflater.inflate(R.layout.loan_list,null);
+        return new LoanTableAdapter.ViewHolder(view);
     }
 
     @SuppressLint("ResourceAsColor")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        LeaseTableModel leaseTableModel = leaseList.get(position);
+        LoanTableModel loanTableModel = loanList.get(position);
 
-        /*
         //set visibility of edit option
-        if (leaseTableModel.getLeaseStatus().equals("in progress")){
+        if (loanTableModel.getStatus().equals("in progress")){
             holder.imagedit.setVisibility(View.VISIBLE);
         }
 
-         */
 
 
-
-        holder.applicationNo.setText(leaseTableModel.getLeaseApplicationNo());
-        holder.customer.setText(leaseTableModel.getLeaseCustomer());
-        holder.product.setText(leaseTableModel.getLeaseProduct());
-        holder.asset.setText(leaseTableModel.getLeaseAsset());
-        holder.action.setText(leaseTableModel.getLeaseAction());
-        holder.status.setText(leaseTableModel.getLeaseStatus());
-
+        holder.applicationNo.setText(loanTableModel.getLoanNo());
+        holder.proposal.setText(loanTableModel.getProposal());
+        holder.customer.setText(loanTableModel.getLoanCustomer());
+        holder.product.setText(loanTableModel.getLoanProduct());
+        holder.action.setText(loanTableModel.getLastAction());
+        holder.status.setText(loanTableModel.getStatus());
 
         /*
         //click edit button open edit form
@@ -85,12 +79,14 @@ public class LeaseTableAdapter extends RecyclerView.Adapter<LeaseTableAdapter.Vi
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mCtx, SanctionLetterDisplay.class);
-                intent.putExtra("userid", leaseTableModel.getUserid());
-                System.out.println("useId is ----"+ leaseTableModel.getUserid());
+                intent.putExtra("userid", loanTableModel.getUserId());
+                System.out.println("useId is ----"+ loanTableModel.getUserId());
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mCtx.startActivity(intent);
             }
         });
+
+
 
 
         /*/click layout open edit form
@@ -109,22 +105,22 @@ public class LeaseTableAdapter extends RecyclerView.Adapter<LeaseTableAdapter.Vi
 
     @Override
     public int getItemCount() {
-        return leaseList.size();
+        return loanList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         LinearLayout recyclerItem;
         ImageView imagedit,imageSanction;
-        TextView applicationNo,customer,product,asset,action,status;
+        TextView applicationNo,proposal,customer,product,action,status;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             recyclerItem = itemView.findViewById(R.id.lvTemplate);
-            applicationNo = itemView.findViewById(R.id.txtApplication);
+            applicationNo = itemView.findViewById(R.id.txtApplicationNo);
+            proposal = itemView.findViewById(R.id.txtProposal);
             customer = itemView.findViewById(R.id.txtCustomer);
             product = itemView.findViewById(R.id.txtProduct);
-            asset = itemView.findViewById(R.id.txtAsset);
             action = itemView.findViewById(R.id.txtLastAction);
             status = itemView.findViewById(R.id.txtStatus);
             imagedit = itemView.findViewById(R.id.imgEdit);

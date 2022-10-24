@@ -40,7 +40,7 @@
             android:text="Cold Leeds"
             android:gravity="center"
             android:textColor="@color/white"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -82,7 +82,7 @@
             android:text="Username"
             android:drawableLeft="@drawable/nic"
             android:drawableRight="@drawable/dropdown_purple"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textColor="@color/purpletop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -97,7 +97,7 @@
             android:gravity="center"
             android:drawableRight="@drawable/logout"
             android:text="sign out  "
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textColor="@color/purpletop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -116,11 +116,13 @@
         android:text="New Leed   "
         android:textColor="@color/black"
         android:textStyle="bold"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintHorizontal_bias="0.95"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.07"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.02"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
 
     <HorizontalScrollView
@@ -128,6 +130,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/newlead">
 
@@ -236,8 +239,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/coldrecycler"
-                android:layout_marginBottom="180dp"
-                android:paddingBottom="70dp"/>
+                android:layout_marginBottom="200dp"
+                android:paddingBottom="90dp"/>
 
 
         </LinearLayout>

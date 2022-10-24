@@ -42,6 +42,9 @@ public class LeedsTableAdapter extends RecyclerView.Adapter<LeedsTableAdapter.Vi
 
         LeedsTableModel leedsTableModel = leedsList.get(position);
 
+        System.out.println(leedsTableModel.getAddress());
+
+
         holder.id.setText(leedsTableModel.getId());
         holder.nic.setText(leedsTableModel.getNic());
         holder.name.setText(leedsTableModel.getName());
@@ -56,6 +59,7 @@ public class LeedsTableAdapter extends RecyclerView.Adapter<LeedsTableAdapter.Vi
             public void onClick(View v) {
                 Intent intent = new Intent(mCtx, LeedsUpdate.class);
                 intent.putExtra("id", leedsTableModel.getUserId());
+                System.out.println("user id is ---- "+leedsTableModel.getUserId());
                 intent.putExtra("leedsId", leedsTableModel.getId());
                 intent.putExtra("topic", leedsTableModel.getTopic());
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

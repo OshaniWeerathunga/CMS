@@ -4,6 +4,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string-array name="titleSpinner">
+        <item>--Choose Title--</item>
         <item>Mr</item>
         <item>Mrs</item>
         <item>Miss</item>
@@ -13,11 +14,13 @@
     </string-array>
 
     <string-array name="genderSpinner">
+        <item>--Choose Gender--</item>
         <item>Male</item>
         <item>Female</item>
     </string-array>
 
     <string-array name="mkofficerSpinner">
+        <item>--Choose Marketing Officer--</item>
         <item>Poorna Prathiba</item>
         <item>Dinesh Wickramasinghe</item>
         <item>Sirimal Priyantha</item>
@@ -82,9 +85,22 @@
         <item>Manoj Wijethunga</item>
         <item>Chamara Sandaruwan</item>
         <item>Indra Kumar</item>
+        <item>Gihan Dabare</item>
+        <item>Buddi Gayashan</item>
+        <item>Chamidu Malshan</item>
+        <item>Sahan Chathuranga</item>
+        <item>Suresh jayathilaka</item>
+        <item>Madhura Naullage</item>
+        <item>Ruwan Hemantha</item>
+        <item>Anjana Ishara</item>
+        <item>Isuru Sasanka Bandara</item>
+        <item>Lakshan Priyadarshana</item>
+        <item>Anne Jennifer</item>
+        <item>charika Perera</item>
     </string-array>
 
     <string-array name="branchSpinner">
+        <item>--Choose Branch--</item>
         <item>Head Office</item>
         <item>City Office</item>
         <item>Kiribathgoda</item>
@@ -101,9 +117,16 @@
         <item>Dambulla</item>
         <item>Malabe</item>
         <item>Maharagama</item>
+        <item>Nugegoda</item>
+        <item>Panadura</item>
+        <item>Wennappuwa</item>
+        <item>Pettah</item>
+        <item>Nittambuwa</item>
+        <item>Homagama</item>
     </string-array>
 
     <string-array name="vbranchSpinner">
+        <item>--Choose Virtual Branch--</item>
         <item>Head Office</item>
         <item>City Office</item>
         <item>Kiribathgoda</item>
@@ -115,25 +138,68 @@
         <item>Gampaha</item>
         <item>Negombo</item>
         <item>Galle</item>
+        <item>Kurunegala</item>
+        <item>Metro</item>
+        <item>Dambulla</item>
+        <item>Malabe</item>
+        <item>Maharagama</item>
+        <item>Nugegoda</item>
+        <item>Panadura</item>
+        <item>Wennappuwa</item>
+        <item>Pettah</item>
+        <item>Nittambuwa</item>
+        <item>Homagama</item>
     </string-array>
 
     <string-array name="channelSpinner">
-        <item>Pharmaceutical Industry</item>
+        <item>--Choose Channel--</item>
+        <item>Pharmacies/Jewellery Shops/Salon</item>
         <item>Insurance Agent</item>
-        <item>Garage Agent</item>
-        <item>Vehicle Dealer</item>
+        <item>Professionals/Doctors/Lawyers</item>
         <item>Existing Clients</item>
+        <item>Education Centers/Tuition Class</item>
+        <item>Housing Scheme/Apartments</item>
+        <item>Retail/Whole sale/Grocery Shop</item>
+        <item>Service Station/Vehicle Dealers/Taxi</item>
     </string-array>
 
     <string-array name="productSpinner">
-        <item>Leasing</item>
+        <item>--Choose Product--</item>
+        <item>Letter of Credit</item>
+        <item>Revolving Loan</item>
+        <item>Import Loan</item>
+        <item>Pledge Loans</item>
+        <item>Term Loan</item>
+        <item>Trade Finance</item>
+        <item>Advances Against Import Bill</item>
+        <item>Bank Guarantee</item>
+        <item>Credit Card</item>
+        <item>Factoring</item>
+        <item>Hire Purchase</item>
+        <item>Overdraft</item>
+        <item>Personal Loan</item>
+        <item>Short Term Loan</item>
         <item>Vehicle Loan</item>
-        <item>Finance Lease - 2W</item>
-        <item>Finance Lease - 3W</item>
-        <item>Finance Lease - 4W</item>
+        <item>Vehicle Pledge Loan</item>
+        <item>Letter of Credit (Sight/Usance)</item>
+        <item>Letter of Credit (Sight)- Facility Client</item>
+        <item>Letter of Credit (Usance)- Facility Client</item>
+        <item>Finance Lease-4W</item>
+        <item>Finance Lease-3W</item>
+        <item>Letter of Credit (Sight)- One Off Client</item>
+        <item>Letter of Credit (Usance)- One Off Client</item>
+        <item>Finance Lease-2W</item>
+        <item>Smart Draft</item>
+        <item>Smart Cash</item>
+        <item>Fixed Deposit</item>
+        <item>Savings</item>
+        <item>Short Term Revolving Loan</item>
+        <item>Gold Loan</item>
+        <item>Cash Back Loan</item>
     </string-array>
 
     <string-array name="stageSpinner">
+        <item>--Choose Stage--</item>
         <item>Hot</item>
         <item>Cold</item>
         <item>Warm</item>
@@ -153,6 +219,12 @@
     <string-array name="calRepayment">
         <item>Equated</item>
         <item>Structured</item>
+    </string-array>
+
+    <string-array name="facilityType">
+        <item>Leads</item>
+        <item>Leasing</item>
+        <item>Loans</item>
     </string-array>
 
 

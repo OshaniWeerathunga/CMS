@@ -23,7 +23,7 @@ public class MoreLeaseDataLoad extends AppCompatActivity {
         webView = findViewById(R.id.moredataWebview);
         webView.setWebViewClient(new WebViewClient());
         webView.getSettings().setJavaScriptEnabled(true);
-        webView.loadUrl("http://192.168.40.7:8080/cms/leasing?id="+id);
+        webView.loadUrl("http://cms.fintrex.lk/leasing?id="+id);
 
     }
 }

@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.example.cms.HelperClass.PostRequest;
 import com.example.cms.Leeds.LeedsTablesLayout;
+import com.example.cms.Leeds.NewLeadLayout;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -35,17 +36,16 @@ import java.util.Map;
 
 public class LeedsHeadPage extends AppCompatActivity {
 
-    LinearLayout hotleeds,warmleeds,coldleeds,prospectleeds,lvItem;
-    TextView leedsTopic,hotcountTv,warmcountTv,coldcountTv,prospectcountTv;
-    String hot,warm,cold,prospect;
+    LinearLayout hotleeds,warmleeds,coldleeds,prospectleeds,lvItem,moAllocation;
+    TextView newlead,hotcountTv,warmcountTv,coldcountTv,prospectcountTv,moPendingTv;
+    String hot,warm,cold,prospect,mo_pending;
     ProgressDialog progressDialog;
     ImageView back;
     Button refresh;
 
-    String LeaseDataURL = "http://192.168.40.7:8080/cms/ro_dashboard/allocated_contracts_count?";
-    String PrecentageUrl = "http://192.168.40.7:8080/cms/company?";
-    String loadUrl = "http://192.168.40.7:8080/cms/ro_dashboard/allocated_contracts_data?";
-    String ServerLogoutURL = "http://192.168.40.7:8080/cms/logout?";
+    String LeadsDataURL = "http://cms.fintrex.lk/ro_dashboard/allocated_contracts_count?";
+    String loadUrl = "http://cms.fintrex.lk/ro_dashboard/allocated_contracts_data?";
+    String ServerLogoutURL = "http://cms.fintrex.lk/logout?";
     URL url;
     String finalResult;
     HashMap<String,String> hashMap = new HashMap<>();
@@ -89,11 +89,13 @@ public class LeedsHeadPage extends AppCompatActivity {
         warmleeds = findViewById(R.id.warmleedsLayout);
         coldleeds = findViewById(R.id.coldleedsLayout);
         prospectleeds = findViewById(R.id.prospectleedsLayout);
+        moAllocation = findViewById(R.id.moPendingleedsLayout);
 
         hotcountTv = findViewById(R.id.hotleedscount);
         warmcountTv = findViewById(R.id.warmleedscount);
         coldcountTv = findViewById(R.id.coldleedscount);
         prospectcountTv = findViewById(R.id.prospectleedscount);
+        moPendingTv = findViewById(R.id.moPendingcount);
 
         //summary textview identify
         cmTv = findViewById(R.id.cmValue);
@@ -126,7 +128,7 @@ public class LeedsHeadPage extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), LeedsTablesLayout.class);
                 intent.putExtra("data",hotpara);
-                intent.putExtra("leedsName","Hot Leeds");
+                intent.putExtra("leedsName","Hot Leads");
                 startActivity(intent);
             }
         });
@@ -136,7 +138,7 @@ public class LeedsHeadPage extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), LeedsTablesLayout.class);
                 intent.putExtra("data",coldpara);
-                intent.putExtra("leedsName","Cold Leeds");
+                intent.putExtra("leedsName","Cold Leads");
                 startActivity(intent);
 
             }
@@ -147,7 +149,7 @@ public class LeedsHeadPage extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), LeedsTablesLayout.class);
                 intent.putExtra("data",warmpara);
-                intent.putExtra("leedsName","Warm Leeds");
+                intent.putExtra("leedsName","Warm Leads");
                 startActivity(intent);
             }
         });
@@ -157,10 +159,33 @@ public class LeedsHeadPage extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), LeedsTablesLayout.class);
                 intent.putExtra("data",prospectpara);
-                intent.putExtra("leedsName","Prospecting Leeds");
+                intent.putExtra("leedsName","Prospecting Leads");
                 startActivity(intent);
             }
         });
+
+        moAllocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), LeedsTablesLayout.class);
+                intent.putExtra("data","allocation");
+                intent.putExtra("leedsName","MO Pendings");
+                startActivity(intent);
+            }
+        });
+
+        //new lead
+        newlead = findViewById(R.id.newlead);
+        newlead.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), NewLeadLayout.class);
+                intent.putExtra("topic", "New Lead");
+                startActivity(intent);
+
+            }
+        });
+
 
         //define logout button
         logout = findViewById(R.id.logout);
@@ -209,11 +234,13 @@ public class LeedsHeadPage extends AppCompatActivity {
                         cold = jsonObject.getString("cold");
                         warm = jsonObject.getString("warm");
                         prospect = jsonObject.getString("prospecting");
+                        mo_pending = jsonObject.getString("mo_pending");
 
                         hotcountTv.setText(hot);
                         warmcountTv.setText(warm);
                         coldcountTv.setText(cold);
                         prospectcountTv.setText(prospect);
+                        moPendingTv.setText(mo_pending);
                     }
                     else{
                         Toast.makeText(LeedsHeadPage.this,"Cannot Load Data.Please Check your connection", Toast.LENGTH_LONG).show();
@@ -229,7 +256,7 @@ public class LeedsHeadPage extends AppCompatActivity {
             protected String doInBackground(String... params) {
 
                 try {
-                    url = new URL(LeaseDataURL);
+                    url = new URL(LeadsDataURL);
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 }
@@ -243,6 +270,7 @@ public class LeedsHeadPage extends AppCompatActivity {
         LeaseFunctionClass leaseFunctionClass = new LeaseFunctionClass();
         leaseFunctionClass.execute();
     }
+
 
     public void logout(){
         class LogoutFunctionClass extends AsyncTask<String,Void,String> {

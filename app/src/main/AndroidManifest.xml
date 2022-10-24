@@ -20,7 +20,13 @@
             android:name=".Leasing.LeasingTableLayout"
             android:exported="true" />
         <activity
+            android:name=".Loan.LoanTableLayout"
+            android:exported="true" />
+        <activity
             android:name=".LeaseHeadPage"
+            android:exported="true" />
+        <activity
+            android:name=".LoanHeadPage"
             android:exported="true" />
         <activity
             android:name=".Leeds.Calculator"
@@ -42,7 +48,8 @@
         <activity android:name=".Leeds.LeedsTablesLayout" />
         <activity android:name=".DashboardActivity" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

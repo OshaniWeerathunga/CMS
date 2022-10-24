@@ -35,8 +35,8 @@ import java.util.List;
 public class LeedsTablesLayout extends AppCompatActivity {
 
 
-    String loadUrl = "http://192.168.40.7:8080/cms/ro_dashboard/allocated_contracts_data?";
-    String ServerLogoutURL = "http://192.168.40.7:8080/cms/logout?";
+    String loadUrl = "http://cms.fintrex.lk/ro_dashboard/allocated_contracts_data?";
+    String ServerLogoutURL = "http://cms.fintrex.lk/logout?";
     URL url;
     String finalResult;
     HashMap<String,String> hashMap = new HashMap<>();

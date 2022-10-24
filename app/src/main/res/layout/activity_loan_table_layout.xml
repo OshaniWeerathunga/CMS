@@ -132,14 +132,25 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="1dp"
                     android:gravity="center"
-                    android:text="Application No"
+                    android:text="Loan No"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtProposal"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="1dp"
+                    android:gravity="center"
+                    android:text="Proposal"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/txtCustomer"
-                    android:layout_width="300dp"
+                    android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="1dp"
                     android:gravity="center"
@@ -160,19 +171,8 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/txtAsset"
-                    android:layout_width="120dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="1dp"
-                    android:gravity="center"
-                    android:text="Asset"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-
-                <TextView
                     android:id="@+id/txtLastAction"
-                    android:layout_width="300dp"
+                    android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="1dp"
                     android:gravity="center"

@@ -37,8 +37,8 @@ public class LeaseHeadPage extends AppCompatActivity {
     ImageView back;
     ProgressDialog progressDialog;
 
-    String loadleaseHeadDataUrl = "http://192.168.40.7:8080/cms/leasing/loadLeaseMenuCards?";
-    String ServerLogoutURL = "http://192.168.40.7:8080/cms/logout?";
+    String loadleaseHeadDataUrl = "http://cms.fintrex.lk/leasing/loadLeaseMenuCardsAPP?";
+    String ServerLogoutURL = "http://cms.fintrex.lk/logout?";
     URL url;
     String finalResult;
     HashMap<String,String> hashMap = new HashMap<>();
@@ -206,34 +206,8 @@ public class LeaseHeadPage extends AppCompatActivity {
 
                 progressDialog.dismiss();
 
-                System.out.println(httpResponseMsg);
+                System.out.println("lease count-----"+httpResponseMsg);
 
-
-                /*
-                try {
-                    JSONObject jsonObject = new JSONObject(httpResponseMsg);
-                    if(jsonObject!=null) {
-
-
-                        inprogressValue = jsonObject.getString("cnt");
-                        //creditValue = jsonObject.getString("cold");
-                        //deviationValue = jsonObject.getString("warm");
-                        //pendingValue = jsonObject.getString("prospecting");
-                        //activeValue = jsonObject.getString("prospecting");
-                        //rejectedValue = jsonObject.getString("prospecting");
-
-
-                    }
-                    else{
-                        Toast.makeText(LeaseHeadPage.this,"Cannot Load Data.Please Check your connection", Toast.LENGTH_LONG).show();
-                    }
-
-                }catch (JSONException e) {
-                    e.printStackTrace();
-
-                }
-
-                 */
 
                 try {
                     //JSONObject jsonObject = new JSONObject(httpResponseMsg);
@@ -258,7 +232,7 @@ public class LeaseHeadPage extends AppCompatActivity {
                                 deviationValue = jsonArray.getJSONObject(i).getString("cnt");
                             }else if (jsonArray.getJSONObject(i).getString("status").equals("Pending Verification")){
                                 pendingVerifyValue = jsonArray.getJSONObject(i).getString("cnt");
-                            }else if (jsonArray.getJSONObject(i).getString("status").equals("Rejected")){
+                            }else if (jsonArray.getJSONObject(i).getString("status").equals("rejected")){
                                 rejectedValue = jsonArray.getJSONObject(i).getString("cnt");
                             }
                         }

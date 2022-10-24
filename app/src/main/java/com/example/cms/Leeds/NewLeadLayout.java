@@ -49,15 +49,15 @@ public class NewLeadLayout extends AppCompatActivity implements AdapterView.OnIt
     String topic,msg;
     ImageView back;
     Spinner title,gender,mkofficer,branch,vbranch,channel,product,stage;
-    String profilename,spinnertitleHolder="1",spinnergenderHolder="1",spinnermkofficerHolder="4",spinnerbranchHolder="8",spinnervbranchHolder="8",spinnerchannelHolder="1",spinnerproductHolder="1",spinnerstageHolder="3";
+    String profilename,spinnertitleHolder,spinnergenderHolder,spinnermkofficerHolder,spinnerbranchHolder,spinnervbranchHolder,spinnerchannelHolder,spinnerproductHolder,spinnerstageHolder;
     EditText nic,fullname,initials,dob,email,mobile,paddress1,paddress2,pcity,followupdate,followupaction;
     ArrayAdapter<CharSequence> stageadapter,titleadapter,genderadapter,mkofficeradapter,branchadapter,vbranchadapter,channeladapter,productadapter;
-    TextView profilenameTv,leedsId, topicTv, alertmsg, calculator, logout;
+    TextView profilenameTv,leedsId, topicTv, alertmsg, calculator, logout,stageTV;
     Dialog dialog;
     Button submit, close;
     JSONObject data;
-    String SaveUrl = "http://192.168.40.7:8080/cms/lead/save?";
-    String ServerLogoutURL = "http://192.168.40.7:8080/cms/logout?";
+    String SaveUrl = "http://cms.fintrex.lk/lead/save?";
+    String ServerLogoutURL = "http://cms.fintrex.lk/logout?";
     URL url;
     String finalResult;
     DatePickerDialog.OnDateSetListener setListener;
@@ -116,6 +116,7 @@ public class NewLeadLayout extends AppCompatActivity implements AdapterView.OnIt
         channel = findViewById(R.id.channel);
         product = findViewById(R.id.product);
         stage = findViewById(R.id.stage);
+        stageTV = findViewById(R.id.stageTV);
 
         //edit Text boxes
         leedsId = findViewById(R.id.leedId);
@@ -276,7 +277,7 @@ public class NewLeadLayout extends AppCompatActivity implements AdapterView.OnIt
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(validateNic() & validateName() &validateMobile()){
+                if(validateName() &validateMobile() & validateStage()){
                     SaveData();
 
                 }
@@ -301,6 +302,9 @@ public class NewLeadLayout extends AppCompatActivity implements AdapterView.OnIt
         if (parent.getId() == R.id.title) {
             String dropdownInterest = parent.getItemAtPosition(position).toString();
             switch (dropdownInterest) {
+                case "--Choose Title--":
+                    spinnertitleHolder = "";
+                    break;
                 case "Mr":
                     spinnertitleHolder = "1";
                     break;
@@ -326,6 +330,9 @@ public class NewLeadLayout extends AppCompatActivity implements AdapterView.OnIt
         else if (parent.getId() == R.id.gender) {
             String dropdownTerm = parent.getItemAtPosition(position).toString();
             switch (dropdownTerm) {
+                case "--Choose Gender--":
+                    spinnergenderHolder = "";
+                    break;
                 case "Male":
                     spinnergenderHolder = "1";
                     break;
@@ -339,7 +346,9 @@ public class NewLeadLayout extends AppCompatActivity implements AdapterView.OnIt
         else if (parent.getId() == R.id.mkofficer) {
             String dropdownTerm = parent.getItemAtPosition(position).toString();
             switch (dropdownTerm) {
-
+                case "--Choose Marketing Officer--":
+                    spinnermkofficerHolder = "";
+                    break;
                 case "Poorna Prathiba":
                     spinnermkofficerHolder = "4";
                     break;
@@ -533,6 +542,42 @@ public class NewLeadLayout extends AppCompatActivity implements AdapterView.OnIt
                 case "Indra Kumar":
                     spinnermkofficerHolder = "423";
                     break;
+                case "Gihan Dabare":
+                    spinnermkofficerHolder = "425";
+                    break;
+                case "Buddi Gayashan":
+                    spinnermkofficerHolder = "427";
+                    break;
+                case "Chamidu Malshan":
+                    spinnermkofficerHolder = "436";
+                    break;
+                case "Sahan Chathuranga":
+                    spinnermkofficerHolder = "437";
+                    break;
+                case "Suresh jayathilaka":
+                    spinnermkofficerHolder = "438";
+                    break;
+                case "Madhura Naullage":
+                    spinnermkofficerHolder = "439";
+                    break;
+                case "Ruwan Hemantha":
+                    spinnermkofficerHolder = "440";
+                    break;
+                case "Anjana Ishara":
+                    spinnermkofficerHolder = "441";
+                    break;
+                case "Isuru Sasanka Bandara":
+                    spinnermkofficerHolder = "446";
+                    break;
+                case "Lakshan Priyadarshana":
+                    spinnermkofficerHolder = "450";
+                    break;
+                case "Anne Jennifer":
+                    spinnermkofficerHolder = "451";
+                    break;
+                case "Charika Perera":
+                    spinnermkofficerHolder = "453";
+                    break;
 
             }
         }
@@ -540,6 +585,9 @@ public class NewLeadLayout extends AppCompatActivity implements AdapterView.OnIt
         else if (parent.getId() == R.id.branch) {
             String dropdownTerm = parent.getItemAtPosition(position).toString();
             switch (dropdownTerm) {
+                case "--Choose Branch--":
+                    spinnerbranchHolder = "";
+                    break;
                 case "Head Office":
                     spinnerbranchHolder = "8";
                     break;
@@ -585,6 +633,27 @@ public class NewLeadLayout extends AppCompatActivity implements AdapterView.OnIt
                 case "Maharagama":
                     spinnerbranchHolder = "18";
                     break;
+                case "Kandy":
+                    spinnerbranchHolder = "6";
+                    break;
+                case "Nugegoda":
+                    spinnerbranchHolder = "19";
+                    break;
+                case "Panadura":
+                    spinnerbranchHolder = "20";
+                    break;
+                case "Wennappuwa":
+                    spinnerbranchHolder = "21";
+                    break;
+                case "Pettah":
+                    spinnerbranchHolder = "22";
+                    break;
+                case "Nittambuwa":
+                    spinnerbranchHolder = "23";
+                    break;
+                case "Homagama":
+                    spinnerbranchHolder = "24";
+                    break;
 
             }
         }
@@ -592,6 +661,9 @@ public class NewLeadLayout extends AppCompatActivity implements AdapterView.OnIt
         else if (parent.getId() == R.id.virtualbranch) {
             String dropdownTerm = parent.getItemAtPosition(position).toString();
             switch (dropdownTerm) {
+                case "--Choose Virtual Branch--":
+                    spinnervbranchHolder = "";
+                    break;
                 case "Head Office":
                     spinnervbranchHolder = "8";
                     break;
@@ -637,6 +709,27 @@ public class NewLeadLayout extends AppCompatActivity implements AdapterView.OnIt
                 case "Maharagama":
                     spinnervbranchHolder = "18";
                     break;
+                case "Kandy":
+                    spinnervbranchHolder = "6";
+                    break;
+                case "Nugegoda":
+                    spinnervbranchHolder = "19";
+                    break;
+                case "Panadura":
+                    spinnervbranchHolder = "20";
+                    break;
+                case "Wennappuwa":
+                    spinnervbranchHolder = "21";
+                    break;
+                case "Pettah":
+                    spinnervbranchHolder = "22";
+                    break;
+                case "Nittambuwa":
+                    spinnervbranchHolder = "23";
+                    break;
+                case "Homagama":
+                    spinnervbranchHolder = "24";
+                    break;
 
             }
         }
@@ -644,20 +737,32 @@ public class NewLeadLayout extends AppCompatActivity implements AdapterView.OnIt
         else if (parent.getId() == R.id.channel) {
             String dropdownTerm = parent.getItemAtPosition(position).toString();
             switch (dropdownTerm) {
-                case "Pharmaceutical Industry":
-                    spinnerchannelHolder = "1";
+                case "--Choose Channel--":
+                    spinnerchannelHolder = "";
+                    break;
+                case "Pharmacies/Jewellery Shops/Salon":
+                    spinnerchannelHolder = "7";
                     break;
                 case "Insurance Agent":
                     spinnerchannelHolder = "4";
                     break;
-                case "Garage Agent":
-                    spinnerchannelHolder = "2";
+                case "Housing Scheme/Apartments":
+                    spinnerchannelHolder = "6";
                     break;
-                case "Vehicle Dealer":
-                    spinnerchannelHolder = "3";
+                case "Professionals/Doctors/Lawyers":
+                    spinnerchannelHolder = "11";
                     break;
                 case "Existing Clients":
                     spinnerchannelHolder = "5";
+                    break;
+                case "Education Centers/Tuition Class":
+                    spinnerchannelHolder = "10";
+                    break;
+                case "Retail/Whole sale/Grocery Shop":
+                    spinnerchannelHolder = "9";
+                    break;
+                case "Service Station/Vehicle Dealers/Taxi":
+                    spinnerchannelHolder = "8";
                     break;
 
             }
@@ -666,21 +771,103 @@ public class NewLeadLayout extends AppCompatActivity implements AdapterView.OnIt
         else if (parent.getId() == R.id.product) {
             String dropdownTerm = parent.getItemAtPosition(position).toString();
             switch (dropdownTerm) {
-                case "Leasing":
-                    spinnerproductHolder = "62";
+                case "--Choose Product--":
+                    spinnerproductHolder = "";
+                    break;
+                case "Letter of Credit":
+                    spinnerproductHolder = "44";
+                    break;
+                case "Revolving Loan":
+                    spinnerproductHolder = "45";
+                    break;
+                case "Import Loan":
+                    spinnerproductHolder = "46";
+                    break;
+                case "Pledge Loans":
+                    spinnerproductHolder = "47";
+                    break;
+                case "Term Loan":
+                    spinnerproductHolder = "59";
+                    break;
+                case "Trade Finance":
+                    spinnerproductHolder = "60";
+                    break;
+                case "Advances Against Import Bill":
+                    spinnerproductHolder = "63";
+                    break;
+                case "Bank Guarantee":
+                    spinnerproductHolder = "64";
+                    break;
+                case "Credit Card":
+                    spinnerproductHolder = "65";
+                    break;
+                case "Factoring":
+                    spinnerproductHolder = "66";
+                    break;
+                case "Hire Purchase":
+                    spinnerproductHolder = "67";
+                    break;
+                case "Overdraft":
+                    spinnerproductHolder = "68";
+                    break;
+                case "Personal Loan":
+                    spinnerproductHolder = "69";
+                    break;
+                case "Short Term Loan":
+                    spinnerproductHolder = "70";
                     break;
                 case "Vehicle Loan":
                     spinnerproductHolder = "71";
                     break;
-                case "Finance Lease - 4W":
+                case "Vehicle Pledge Loan":
+                    spinnerproductHolder = "72";
+                    break;
+                case "Letter of Credit (Sight/Usance)":
+                    spinnerproductHolder = "73";
+                    break;
+                case "Letter of Credit (Sight)- Facility Client":
+                    spinnerproductHolder = "74";
+                    break;
+                case "Letter of Credit (Usance)- Facility Client":
+                    spinnerproductHolder = "75";
+                    break;
+                case "Finance Lease-4W":
                     spinnerproductHolder = "79";
                     break;
-                case "Finance Lease - 3W":
+                case "Finance Lease-3W":
                     spinnerproductHolder = "80";
                     break;
-                case "Finance Lease - 2W":
+                case "Letter of Credit (Sight)- One Off Client":
+                    spinnerproductHolder = "81";
+                    break;
+                case "Letter of Credit (Usance)- One Off Client":
+                    spinnerproductHolder = "82";
+                    break;
+                case "Finance Lease-2W":
                     spinnerproductHolder = "83";
                     break;
+                case "Smart Draft":
+                    spinnerproductHolder = "84";
+                    break;
+                case "Smart Cash":
+                    spinnerproductHolder = "85";
+                    break;
+                case "Fixed Deposit":
+                    spinnerproductHolder = "86";
+                    break;
+                case "Savings":
+                    spinnerproductHolder = "87";
+                    break;
+                case "Short Term Revolving Loan":
+                    spinnerproductHolder = "88";
+                    break;
+                case "Gold Loan":
+                    spinnerproductHolder = "90";
+                    break;
+                case "Cash Back Loan":
+                    spinnerproductHolder = "91";
+                    break;
+
 
             }
         }
@@ -688,6 +875,9 @@ public class NewLeadLayout extends AppCompatActivity implements AdapterView.OnIt
         else if (parent.getId() == R.id.stage) {
             String dropdownTerm = parent.getItemAtPosition(position).toString();
             switch (dropdownTerm) {
+                case "--Choose Stage--":
+                    spinnerstageHolder = "";
+                    break;
                 case "Hot":
                     spinnerstageHolder = "3";
                     break;
@@ -767,6 +957,21 @@ public class NewLeadLayout extends AppCompatActivity implements AdapterView.OnIt
             return false;
         }else{
             fullname.setError(null);
+            return true;
+        }
+
+    }
+
+    //validate stage spinner
+    private boolean validateStage(){
+        String val = spinnerstageHolder;
+
+        if(val.equals("")){
+            stageTV.setError("Please select Stage");
+            stageTV.setText("Please select Stage");
+            stageTV.setTextColor(Color.RED);
+            return false;
+        }else{
             return true;
         }
 
